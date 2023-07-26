@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BusinessModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tbl_Estampa_GrupoEstampa">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_GrupoEstampa" Type="Int32" Nullable="false" />
+    <Property Name="Id_Estampa" Type="Int32" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tbl_Estampas" Relationship="Self.FK__tbl_Estam__Id_Es__5070F446" FromRole="tbl_Estampa_GrupoEstampa" ToRole="tbl_Estampas" />
+    <NavigationProperty Name="tbl_Grupo_Estampas" Relationship="Self.FK__tbl_Estam__Id_Gr__4F7CD00D" FromRole="tbl_Estampa_GrupoEstampa" ToRole="tbl_Grupo_Estampas" />
+    <Property Name="Id_Imagen" Type="Int32" />
+    <NavigationProperty Name="tbl_Imagenes" Relationship="BusinessModel.FK__tbl_Estam__Id_Im__73BA3083" FromRole="tbl_Estampa_GrupoEstampa" ToRole="tbl_Imagenes" />
+  </EntityType>
+  <EntityType Name="tbl_Estampas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Imagen" Type="Int32" />
+    <Property Name="Visible" Type="Boolean" />
+    <Property Name="Eliminado" Type="Boolean" />
+    <NavigationProperty Name="tbl_Estampa_GrupoEstampa" Relationship="Self.FK__tbl_Estam__Id_Es__5070F446" FromRole="tbl_Estampas" ToRole="tbl_Estampa_GrupoEstampa" />
+    <NavigationProperty Name="tbl_Plantillas_Estampas" Relationship="Self.FK__tbl_Plant__Id_Es__5629CD9C" FromRole="tbl_Estampas" ToRole="tbl_Plantillas_Estampas" />
+    <NavigationProperty Name="tbl_cart" Relationship="BusinessModel.FK__tbl_cart__Id_Est__10566F31" FromRole="tbl_Estampas" ToRole="tbl_cart" />
+    <NavigationProperty Name="tbl_Imagenes" Relationship="BusinessModel.FK__tbl_Estam__Id_Im__5812160E" FromRole="tbl_Estampas" ToRole="tbl_Imagenes" />
+  </EntityType>
+  <EntityType Name="tbl_Grupo_Estampas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Imagen" Type="Int32" />
+    <Property Name="Visible" Type="Boolean" />
+    <Property Name="Eliminado" Type="Boolean" />
+    <NavigationProperty Name="tbl_Estampa_GrupoEstampa" Relationship="Self.FK__tbl_Estam__Id_Gr__4F7CD00D" FromRole="tbl_Grupo_Estampas" ToRole="tbl_Estampa_GrupoEstampa" />
+    <NavigationProperty Name="tbl_Imagenes" Relationship="BusinessModel.FK__tbl_Grupo__Id_Im__571DF1D5" FromRole="tbl_Grupo_Estampas" ToRole="tbl_Imagenes" />
+  </EntityType>
+  <EntityType Name="tbl_Plantillas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Id_imagen" Type="Int32" />
+    <Property Name="Id_imagenPlantilla" Type="Int32" />
+    <Property Name="Visible" Type="Boolean" />
+    <Property Name="Eliminado" Type="Boolean" />
+    <NavigationProperty Name="tbl_Plantillas_Estampas" Relationship="Self.FK__tbl_Plant__Id_Pl__5535A963" FromRole="tbl_Plantillas" ToRole="tbl_Plantillas_Estampas" />
+    <NavigationProperty Name="tbl_Productos_Plantillas" Relationship="Self.FK__tbl_Produ__Id_Pl__52593CB8" FromRole="tbl_Plantillas" ToRole="tbl_Productos_Plantillas" />
+    <NavigationProperty Name="tbl_cart" Relationship="BusinessModel.FK__tbl_cart__Id_Pla__0F624AF8" FromRole="tbl_Plantillas" ToRole="tbl_cart" />
+    <NavigationProperty Name="tbl_PrametrosPersonalizacion" Relationship="BusinessModel.FK__tbl_Prame__Id_Pl__3C34F16F" FromRole="tbl_Plantillas" ToRole="tbl_PrametrosPersonalizacion" />
+    <NavigationProperty Name="tbl_Imagenes" Relationship="BusinessModel.FK__tbl_Plant__Id_im__59063A47" FromRole="tbl_Plantillas" ToRole="tbl_Imagenes" />
+    <NavigationProperty Name="tbl_Imagenes1" Relationship="BusinessModel.FK__tbl_Plant__Id_im__59FA5E80" FromRole="tbl_Plantillas" ToRole="tbl_Imagenes" />
+  </EntityType>
+  <EntityType Name="tbl_Plantillas_Estampas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Plantilla" Type="Int32" Nullable="false" />
+    <Property Name="Id_Estampa" Type="Int32" Nullable="false" />
+    <Property Name="Id_ImagenPlantilla" Type="Int32" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tbl_Estampas" Relationship="Self.FK__tbl_Plant__Id_Es__5629CD9C" FromRole="tbl_Plantillas_Estampas" ToRole="tbl_Estampas" />
+    <NavigationProperty Name="tbl_Plantillas" Relationship="Self.FK__tbl_Plant__Id_Pl__5535A963" FromRole="tbl_Plantillas_Estampas" ToRole="tbl_Plantillas" />
+    <NavigationProperty Name="tbl_cart" Relationship="BusinessModel.FK__tbl_cart__Id_Pla__2180FB33" FromRole="tbl_Plantillas_Estampas" ToRole="tbl_cart" />
+    <NavigationProperty Name="tbl_Imagenes" Relationship="BusinessModel.FK__tbl_Plant__Id_Im__5441852A" FromRole="tbl_Plantillas_Estampas" ToRole="tbl_Imagenes" />
+  </EntityType>
+  <EntityType Name="tbl_Productos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Imagen" Type="Int32" />
+    <Property Name="Visible" Type="Boolean" />
+    <Property Name="Eliminado" Type="Boolean" />
+    <NavigationProperty Name="tbl_Productos_Plantillas" Relationship="Self.FK__tbl_Produ__Id_Pr__5165187F" FromRole="tbl_Productos" ToRole="tbl_Productos_Plantillas" />
+    <NavigationProperty Name="tbl_cart" Relationship="BusinessModel.FK__tbl_cart__Id_Pro__0E6E26BF" FromRole="tbl_Productos" ToRole="tbl_cart" />
+    <Property Name="Is_Destacado" Type="Boolean" />
+    <NavigationProperty Name="tbl_Imagenes" Relationship="BusinessModel.FK__tbl_Produ__Id_Im__534D60F1" FromRole="tbl_Productos" ToRole="tbl_Imagenes" />
+  </EntityType>
+  <EntityType Name="tbl_Productos_Plantillas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Producto" Type="Int32" Nullable="false" />
+    <Property Name="Id_Plantilla" Type="Int32" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tbl_Plantillas" Relationship="Self.FK__tbl_Produ__Id_Pl__52593CB8" FromRole="tbl_Productos_Plantillas" ToRole="tbl_Plantillas" />
+    <NavigationProperty Name="tbl_Productos" Relationship="Self.FK__tbl_Produ__Id_Pr__5165187F" FromRole="tbl_Productos_Plantillas" ToRole="tbl_Productos" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="4" />
+  </EntityType>
+  <Association Name="FK__tbl_Estam__Id_Es__5070F446">
+    <End Role="tbl_Estampas" Type="Self.tbl_Estampas" Multiplicity="1" />
+    <End Role="tbl_Estampa_GrupoEstampa" Type="Self.tbl_Estampa_GrupoEstampa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Estampas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Estampa_GrupoEstampa">
+        <PropertyRef Name="Id_Estampa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Estam__Id_Gr__4F7CD00D">
+    <End Role="tbl_Grupo_Estampas" Type="Self.tbl_Grupo_Estampas" Multiplicity="1" />
+    <End Role="tbl_Estampa_GrupoEstampa" Type="Self.tbl_Estampa_GrupoEstampa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Grupo_Estampas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Estampa_GrupoEstampa">
+        <PropertyRef Name="Id_GrupoEstampa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Plant__Id_Es__5629CD9C">
+    <End Role="tbl_Estampas" Type="Self.tbl_Estampas" Multiplicity="1" />
+    <End Role="tbl_Plantillas_Estampas" Type="Self.tbl_Plantillas_Estampas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Estampas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Plantillas_Estampas">
+        <PropertyRef Name="Id_Estampa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Plant__Id_Pl__5535A963">
+    <End Role="tbl_Plantillas" Type="Self.tbl_Plantillas" Multiplicity="1" />
+    <End Role="tbl_Plantillas_Estampas" Type="Self.tbl_Plantillas_Estampas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Plantillas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Plantillas_Estampas">
+        <PropertyRef Name="Id_Plantilla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Produ__Id_Pl__52593CB8">
+    <End Role="tbl_Plantillas" Type="Self.tbl_Plantillas" Multiplicity="1" />
+    <End Role="tbl_Productos_Plantillas" Type="Self.tbl_Productos_Plantillas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Plantillas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Productos_Plantillas">
+        <PropertyRef Name="Id_Plantilla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Produ__Id_Pr__5165187F">
+    <End Role="tbl_Productos" Type="Self.tbl_Productos" Multiplicity="1" />
+    <End Role="tbl_Productos_Plantillas" Type="Self.tbl_Productos_Plantillas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Productos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Productos_Plantillas">
+        <PropertyRef Name="Id_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BusinessEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tbl_Estampa_GrupoEstampa" EntityType="Self.tbl_Estampa_GrupoEstampa" />
+    <EntitySet Name="tbl_Estampas" EntityType="Self.tbl_Estampas" />
+    <EntitySet Name="tbl_Grupo_Estampas" EntityType="Self.tbl_Grupo_Estampas" />
+    <EntitySet Name="tbl_Plantillas" EntityType="Self.tbl_Plantillas" />
+    <EntitySet Name="tbl_Plantillas_Estampas" EntityType="Self.tbl_Plantillas_Estampas" />
+    <EntitySet Name="tbl_Productos" EntityType="Self.tbl_Productos" />
+    <EntitySet Name="tbl_Productos_Plantillas" EntityType="Self.tbl_Productos_Plantillas" />
+    <AssociationSet Name="FK__tbl_Estam__Id_Es__5070F446" Association="Self.FK__tbl_Estam__Id_Es__5070F446">
+      <End Role="tbl_Estampas" EntitySet="tbl_Estampas" />
+      <End Role="tbl_Estampa_GrupoEstampa" EntitySet="tbl_Estampa_GrupoEstampa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Estam__Id_Gr__4F7CD00D" Association="Self.FK__tbl_Estam__Id_Gr__4F7CD00D">
+      <End Role="tbl_Grupo_Estampas" EntitySet="tbl_Grupo_Estampas" />
+      <End Role="tbl_Estampa_GrupoEstampa" EntitySet="tbl_Estampa_GrupoEstampa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Plant__Id_Es__5629CD9C" Association="Self.FK__tbl_Plant__Id_Es__5629CD9C">
+      <End Role="tbl_Estampas" EntitySet="tbl_Estampas" />
+      <End Role="tbl_Plantillas_Estampas" EntitySet="tbl_Plantillas_Estampas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Plant__Id_Pl__5535A963" Association="Self.FK__tbl_Plant__Id_Pl__5535A963">
+      <End Role="tbl_Plantillas" EntitySet="tbl_Plantillas" />
+      <End Role="tbl_Plantillas_Estampas" EntitySet="tbl_Plantillas_Estampas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Produ__Id_Pl__52593CB8" Association="Self.FK__tbl_Produ__Id_Pl__52593CB8">
+      <End Role="tbl_Plantillas" EntitySet="tbl_Plantillas" />
+      <End Role="tbl_Productos_Plantillas" EntitySet="tbl_Productos_Plantillas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Produ__Id_Pr__5165187F" Association="Self.FK__tbl_Produ__Id_Pr__5165187F">
+      <End Role="tbl_Productos" EntitySet="tbl_Productos" />
+      <End Role="tbl_Productos_Plantillas" EntitySet="tbl_Productos_Plantillas" />
+    </AssociationSet>
+    <EntitySet Name="tbl_Usuarios" EntityType="BusinessModel.tbl_Usuarios" />
+    <EntitySet Name="v_EstampaPlantillaGrupoEstampa" EntityType="BusinessModel.v_EstampaPlantillaGrupoEstampa" />
+    <EntitySet Name="tbl_cart" EntityType="BusinessModel.tbl_cart" />
+    <EntitySet Name="tbl_Estados_Pedido" EntityType="BusinessModel.tbl_Estados_Pedido" />
+    <AssociationSet Name="FK__tbl_cart__Id_Est__10566F31" Association="BusinessModel.FK__tbl_cart__Id_Est__10566F31">
+      <End Role="tbl_Estampas" EntitySet="tbl_Estampas" />
+      <End Role="tbl_cart" EntitySet="tbl_cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_cart__Id_Est__123EB7A3" Association="BusinessModel.FK__tbl_cart__Id_Est__123EB7A3">
+      <End Role="tbl_Estados_Pedido" EntitySet="tbl_Estados_Pedido" />
+      <End Role="tbl_cart" EntitySet="tbl_cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_cart__Id_Pla__0F624AF8" Association="BusinessModel.FK__tbl_cart__Id_Pla__0F624AF8">
+      <End Role="tbl_Plantillas" EntitySet="tbl_Plantillas" />
+      <End Role="tbl_cart" EntitySet="tbl_cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_cart__Id_Pro__0E6E26BF" Association="BusinessModel.FK__tbl_cart__Id_Pro__0E6E26BF">
+      <End Role="tbl_Productos" EntitySet="tbl_Productos" />
+      <End Role="tbl_cart" EntitySet="tbl_cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_cart__Id_Usu__114A936A" Association="BusinessModel.FK__tbl_cart__Id_Usu__114A936A">
+      <End Role="tbl_Usuarios" EntitySet="tbl_Usuarios" />
+      <End Role="tbl_cart" EntitySet="tbl_cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_cart__Id_Pla__2180FB33" Association="BusinessModel.FK__tbl_cart__Id_Pla__2180FB33">
+      <End Role="tbl_Plantillas_Estampas" EntitySet="tbl_Plantillas_Estampas" />
+      <End Role="tbl_cart" EntitySet="tbl_cart" />
+    </AssociationSet>
+    <EntitySet Name="tbl_Pedidos" EntityType="BusinessModel.tbl_Pedidos" />
+    <AssociationSet Name="FK__tbl_cart__Id_Ped__339FAB6E" Association="BusinessModel.FK__tbl_cart__Id_Ped__339FAB6E">
+      <End Role="tbl_Pedidos" EntitySet="tbl_Pedidos" />
+      <End Role="tbl_cart" EntitySet="tbl_cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Pedid__Id_Es__32AB8735" Association="BusinessModel.FK__tbl_Pedid__Id_Es__32AB8735">
+      <End Role="tbl_Estados_Pedido" EntitySet="tbl_Estados_Pedido" />
+      <End Role="tbl_Pedidos" EntitySet="tbl_Pedidos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Pedid__Id_Us__31B762FC" Association="BusinessModel.FK__tbl_Pedid__Id_Us__31B762FC">
+      <End Role="tbl_Usuarios" EntitySet="tbl_Usuarios" />
+      <End Role="tbl_Pedidos" EntitySet="tbl_Pedidos" />
+    </AssociationSet>
+    <EntitySet Name="tbl_PrametrosPersonalizacion" EntityType="BusinessModel.tbl_PrametrosPersonalizacion" />
+    <AssociationSet Name="FK__tbl_Prame__Id_Pl__3C34F16F" Association="BusinessModel.FK__tbl_Prame__Id_Pl__3C34F16F">
+      <End Role="tbl_Plantillas" EntitySet="tbl_Plantillas" />
+      <End Role="tbl_PrametrosPersonalizacion" EntitySet="tbl_PrametrosPersonalizacion" />
+    </AssociationSet>
+    <EntitySet Name="tbl_Envios_Parametros" EntityType="BusinessModel.tbl_Envios_Parametros" />
+    <EntitySet Name="AspNetUsers" EntityType="BusinessModel.AspNetUsers" />
+    <AssociationSet Name="FK__tbl_Pedid__Id_En__756D6ECB" Association="BusinessModel.FK__tbl_Pedid__Id_En__756D6ECB">
+      <End Role="tbl_Envios_Parametros" EntitySet="tbl_Envios_Parametros" />
+      <End Role="tbl_Pedidos" EntitySet="tbl_Pedidos" />
+    </AssociationSet>
+    <EntitySet Name="v_grupoEstampaPlantilla" EntityType="BusinessModel.v_grupoEstampaPlantilla" />
+    <EntitySet Name="tbl_grupoImagen" EntityType="BusinessModel.tbl_grupoImagen" />
+    <EntitySet Name="tbl_Imagenes" EntityType="BusinessModel.tbl_Imagenes" />
+    <AssociationSet Name="FK__tbl_Estam__Id_Im__73BA3083" Association="BusinessModel.FK__tbl_Estam__Id_Im__73BA3083">
+      <End Role="tbl_Imagenes" EntitySet="tbl_Imagenes" />
+      <End Role="tbl_Estampa_GrupoEstampa" EntitySet="tbl_Estampa_GrupoEstampa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Estam__Id_Im__5812160E" Association="BusinessModel.FK__tbl_Estam__Id_Im__5812160E">
+      <End Role="tbl_Imagenes" EntitySet="tbl_Imagenes" />
+      <End Role="tbl_Estampas" EntitySet="tbl_Estampas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Grupo__Id_Im__571DF1D5" Association="BusinessModel.FK__tbl_Grupo__Id_Im__571DF1D5">
+      <End Role="tbl_Imagenes" EntitySet="tbl_Imagenes" />
+      <End Role="tbl_Grupo_Estampas" EntitySet="tbl_Grupo_Estampas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Image__Id_Gr__0880433F" Association="BusinessModel.FK__tbl_Image__Id_Gr__0880433F">
+      <End Role="tbl_grupoImagen" EntitySet="tbl_grupoImagen" />
+      <End Role="tbl_Imagenes" EntitySet="tbl_Imagenes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Plant__Id_Im__5441852A" Association="BusinessModel.FK__tbl_Plant__Id_Im__5441852A">
+      <End Role="tbl_Imagenes" EntitySet="tbl_Imagenes" />
+      <End Role="tbl_Plantillas_Estampas" EntitySet="tbl_Plantillas_Estampas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Plant__Id_im__59063A47" Association="BusinessModel.FK__tbl_Plant__Id_im__59063A47">
+      <End Role="tbl_Imagenes" EntitySet="tbl_Imagenes" />
+      <End Role="tbl_Plantillas" EntitySet="tbl_Plantillas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Plant__Id_im__59FA5E80" Association="BusinessModel.FK__tbl_Plant__Id_im__59FA5E80">
+      <End Role="tbl_Imagenes" EntitySet="tbl_Imagenes" />
+      <End Role="tbl_Plantillas" EntitySet="tbl_Plantillas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Produ__Id_Im__534D60F1" Association="BusinessModel.FK__tbl_Produ__Id_Im__534D60F1">
+      <End Role="tbl_Imagenes" EntitySet="tbl_Imagenes" />
+      <End Role="tbl_Productos" EntitySet="tbl_Productos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tbl_Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="Is_Admin" Type="Boolean" />
+    <NavigationProperty Name="tbl_cart" Relationship="BusinessModel.FK__tbl_cart__Id_Usu__114A936A" FromRole="tbl_Usuarios" ToRole="tbl_cart" />
+    <NavigationProperty Name="tbl_Pedidos" Relationship="BusinessModel.FK__tbl_Pedid__Id_Us__31B762FC" FromRole="tbl_Usuarios" ToRole="tbl_Pedidos" />
+  </EntityType>
+  <EntityType Name="v_EstampaPlantillaGrupoEstampa">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Codigo" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Id_GrupoEstampa" />
+      <PropertyRef Name="ImagenEstampa" />
+      <PropertyRef Name="Id_Plantilla" />
+      <PropertyRef Name="ImagenPlantillaEstampa" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Imagen" Type="Int32" />
+    <Property Name="Visible" Type="Boolean" />
+    <Property Name="Eliminado" Type="Boolean" />
+    <Property Name="Id_GrupoEstampa" Type="Int32" Nullable="false" />
+    <Property Name="ImagenEstampa" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Plantilla" Type="Int32" Nullable="false" />
+    <Property Name="ImagenPlantillaEstampa" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_cart">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="Id_Estado" Type="Int32" />
+    <Property Name="Id_Usuario" Type="Int32" />
+    <Property Name="keyUser" Type="Guid" />
+    <Property Name="Id_Producto" Type="Int32" />
+    <Property Name="Id_Plantilla" Type="Int32" />
+    <Property Name="Id_Estampa" Type="Int32" />
+    <Property Name="Param1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Param2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Param3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Param4" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ParamSize1" Type="Int32" />
+    <Property Name="ParamSize2" Type="Int32" />
+    <Property Name="ParamSize3" Type="Int32" />
+    <Property Name="ParamSize4" Type="Int32" />
+    <Property Name="FontName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FontColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PrecioUnitario" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="tbl_Estampas" Relationship="BusinessModel.FK__tbl_cart__Id_Est__10566F31" FromRole="tbl_cart" ToRole="tbl_Estampas" />
+    <NavigationProperty Name="tbl_Estados_Pedido" Relationship="BusinessModel.FK__tbl_cart__Id_Est__123EB7A3" FromRole="tbl_cart" ToRole="tbl_Estados_Pedido" />
+    <NavigationProperty Name="tbl_Plantillas" Relationship="BusinessModel.FK__tbl_cart__Id_Pla__0F624AF8" FromRole="tbl_cart" ToRole="tbl_Plantillas" />
+    <NavigationProperty Name="tbl_Productos" Relationship="BusinessModel.FK__tbl_cart__Id_Pro__0E6E26BF" FromRole="tbl_cart" ToRole="tbl_Productos" />
+    <NavigationProperty Name="tbl_Usuarios" Relationship="BusinessModel.FK__tbl_cart__Id_Usu__114A936A" FromRole="tbl_cart" ToRole="tbl_Usuarios" />
+    <Property Name="Id_PlantillaEstampa" Type="Int32" />
+    <NavigationProperty Name="tbl_Plantillas_Estampas" Relationship="BusinessModel.FK__tbl_cart__Id_Pla__2180FB33" FromRole="tbl_cart" ToRole="tbl_Plantillas_Estampas" />
+    <Property Name="Id_Pedido" Type="Int32" />
+    <NavigationProperty Name="tbl_Pedidos" Relationship="BusinessModel.FK__tbl_cart__Id_Ped__339FAB6E" FromRole="tbl_cart" ToRole="tbl_Pedidos" />
+  </EntityType>
+  <EntityType Name="tbl_Estados_Pedido">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbl_cart" Relationship="BusinessModel.FK__tbl_cart__Id_Est__123EB7A3" FromRole="tbl_Estados_Pedido" ToRole="tbl_cart" />
+    <NavigationProperty Name="tbl_Pedidos" Relationship="BusinessModel.FK__tbl_Pedid__Id_Es__32AB8735" FromRole="tbl_Estados_Pedido" ToRole="tbl_Pedidos" />
+  </EntityType>
+  <Association Name="FK__tbl_cart__Id_Est__10566F31">
+    <End Type="BusinessModel.tbl_Estampas" Role="tbl_Estampas" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_cart" Role="tbl_cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Estampas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_cart">
+        <PropertyRef Name="Id_Estampa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_cart__Id_Est__123EB7A3">
+    <End Type="BusinessModel.tbl_Estados_Pedido" Role="tbl_Estados_Pedido" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_cart" Role="tbl_cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Estados_Pedido">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_cart">
+        <PropertyRef Name="Id_Estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_cart__Id_Pla__0F624AF8">
+    <End Type="BusinessModel.tbl_Plantillas" Role="tbl_Plantillas" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_cart" Role="tbl_cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Plantillas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_cart">
+        <PropertyRef Name="Id_Plantilla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_cart__Id_Pro__0E6E26BF">
+    <End Type="BusinessModel.tbl_Productos" Role="tbl_Productos" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_cart" Role="tbl_cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Productos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_cart">
+        <PropertyRef Name="Id_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_cart__Id_Usu__114A936A">
+    <End Type="BusinessModel.tbl_Usuarios" Role="tbl_Usuarios" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_cart" Role="tbl_cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Usuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_cart">
+        <PropertyRef Name="Id_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_cart__Id_Pla__2180FB33">
+    <End Type="BusinessModel.tbl_Plantillas_Estampas" Role="tbl_Plantillas_Estampas" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_cart" Role="tbl_cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Plantillas_Estampas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_cart">
+        <PropertyRef Name="Id_PlantillaEstampa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tbl_Pedidos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="Id_Usuario" Type="Int32" />
+    <Property Name="Id_Envio" Type="Int32" />
+    <Property Name="Id_Pago" Type="Int32" />
+    <Property Name="Id_Estado" Type="Int32" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="4" />
+    <NavigationProperty Name="tbl_cart" Relationship="BusinessModel.FK__tbl_cart__Id_Ped__339FAB6E" FromRole="tbl_Pedidos" ToRole="tbl_cart" />
+    <NavigationProperty Name="tbl_Estados_Pedido" Relationship="BusinessModel.FK__tbl_Pedid__Id_Es__32AB8735" FromRole="tbl_Pedidos" ToRole="tbl_Estados_Pedido" />
+    <NavigationProperty Name="tbl_Usuarios" Relationship="BusinessModel.FK__tbl_Pedid__Id_Us__31B762FC" FromRole="tbl_Pedidos" ToRole="tbl_Usuarios" />
+    <Property Name="keyUser" Type="Guid" />
+    <NavigationProperty Name="tbl_Envios_Parametros" Relationship="BusinessModel.FK__tbl_Pedid__Id_En__756D6ECB" FromRole="tbl_Pedidos" ToRole="tbl_Envios_Parametros" />
+    <Property Name="MedioPago" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion_Facturacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion_Entrega" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Facturacion_Nombre_Apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Facturacion_Piso" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Facturacion_Dto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Facturacion_CP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Entrga_Nombre_Apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Entrega_Piso" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Entrega_Dto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Entrega_CP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MercadoPagoId" Type="String" />
+    <Property Name="MercadoPagoStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__tbl_cart__Id_Ped__339FAB6E">
+    <End Type="BusinessModel.tbl_Pedidos" Role="tbl_Pedidos" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_cart" Role="tbl_cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Pedidos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_cart">
+        <PropertyRef Name="Id_Pedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Pedid__Id_Es__32AB8735">
+    <End Type="BusinessModel.tbl_Estados_Pedido" Role="tbl_Estados_Pedido" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_Pedidos" Role="tbl_Pedidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Estados_Pedido">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Pedidos">
+        <PropertyRef Name="Id_Estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Pedid__Id_Us__31B762FC">
+    <End Type="BusinessModel.tbl_Usuarios" Role="tbl_Usuarios" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_Pedidos" Role="tbl_Pedidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Usuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Pedidos">
+        <PropertyRef Name="Id_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tbl_PrametrosPersonalizacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Plantilla" Type="Int32" />
+    <Property Name="X" Type="Int32" />
+    <Property Name="Y" Type="Int32" />
+    <Property Name="W" Type="Int32" />
+    <Property Name="H" Type="Int32" />
+    <Property Name="CuadroTexto" Type="Int32" />
+    <Property Name="Zoom" Type="Int32" />
+    <NavigationProperty Name="tbl_Plantillas" Relationship="BusinessModel.FK__tbl_Prame__Id_Pl__3C34F16F" FromRole="tbl_PrametrosPersonalizacion" ToRole="tbl_Plantillas" />
+  </EntityType>
+  <Association Name="FK__tbl_Prame__Id_Pl__3C34F16F">
+    <End Type="BusinessModel.tbl_Plantillas" Role="tbl_Plantillas" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_PrametrosPersonalizacion" Role="tbl_PrametrosPersonalizacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Plantillas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_PrametrosPersonalizacion">
+        <PropertyRef Name="Id_Plantilla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tbl_Envios_Parametros">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo_Postal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Localidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Eliminado" Type="Boolean" />
+    <Property Name="Costo_Envio" Type="Decimal" Precision="18" Scale="4" />
+    <NavigationProperty Name="tbl_Pedidos" Relationship="BusinessModel.FK__tbl_Pedid__Id_En__756D6ECB" FromRole="tbl_Envios_Parametros" ToRole="tbl_Pedidos" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK__tbl_Pedid__Id_En__756D6ECB">
+    <End Type="BusinessModel.tbl_Envios_Parametros" Role="tbl_Envios_Parametros" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_Pedidos" Role="tbl_Pedidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Envios_Parametros">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Pedidos">
+        <PropertyRef Name="Id_Envio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="v_grupoEstampaPlantilla">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="Codigo" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Visible" />
+      <PropertyRef Name="Eliminado" />
+      <PropertyRef Name="Id_Plantilla" />
+      <PropertyRef Name="URI" />
+      <PropertyRef Name="Id_Producto" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Codigo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Imagen" Type="Int32" />
+    <Property Name="Visible" Type="Boolean" Nullable="false" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+    <Property Name="Id_Plantilla" Type="Int32" Nullable="false" />
+    <Property Name="URI" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Producto" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_grupoImagen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="codigo" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbl_Imagenes" Relationship="BusinessModel.FK__tbl_Image__Id_Gr__0880433F" FromRole="tbl_grupoImagen" ToRole="tbl_Imagenes" />
+  </EntityType>
+  <EntityType Name="tbl_Imagenes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Actio" Type="Boolean" />
+    <Property Name="URI" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Tamanio" Type="Int32" />
+    <Property Name="Extencion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Id_GrupoImagen" Type="Int32" />
+    <NavigationProperty Name="tbl_Estampa_GrupoEstampa" Relationship="BusinessModel.FK__tbl_Estam__Id_Im__73BA3083" FromRole="tbl_Imagenes" ToRole="tbl_Estampa_GrupoEstampa" />
+    <NavigationProperty Name="tbl_Estampas" Relationship="BusinessModel.FK__tbl_Estam__Id_Im__5812160E" FromRole="tbl_Imagenes" ToRole="tbl_Estampas" />
+    <NavigationProperty Name="tbl_Grupo_Estampas" Relationship="BusinessModel.FK__tbl_Grupo__Id_Im__571DF1D5" FromRole="tbl_Imagenes" ToRole="tbl_Grupo_Estampas" />
+    <NavigationProperty Name="tbl_grupoImagen" Relationship="BusinessModel.FK__tbl_Image__Id_Gr__0880433F" FromRole="tbl_Imagenes" ToRole="tbl_grupoImagen" />
+    <NavigationProperty Name="tbl_Plantillas_Estampas" Relationship="BusinessModel.FK__tbl_Plant__Id_Im__5441852A" FromRole="tbl_Imagenes" ToRole="tbl_Plantillas_Estampas" />
+    <NavigationProperty Name="tbl_Plantillas" Relationship="BusinessModel.FK__tbl_Plant__Id_im__59063A47" FromRole="tbl_Imagenes" ToRole="tbl_Plantillas" />
+    <NavigationProperty Name="tbl_Plantillas1" Relationship="BusinessModel.FK__tbl_Plant__Id_im__59FA5E80" FromRole="tbl_Imagenes" ToRole="tbl_Plantillas" />
+    <NavigationProperty Name="tbl_Productos" Relationship="BusinessModel.FK__tbl_Produ__Id_Im__534D60F1" FromRole="tbl_Imagenes" ToRole="tbl_Productos" />
+  </EntityType>
+  <Association Name="FK__tbl_Estam__Id_Im__73BA3083">
+    <End Type="BusinessModel.tbl_Imagenes" Role="tbl_Imagenes" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_Estampa_GrupoEstampa" Role="tbl_Estampa_GrupoEstampa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Imagenes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Estampa_GrupoEstampa">
+        <PropertyRef Name="Id_Imagen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Estam__Id_Im__5812160E">
+    <End Type="BusinessModel.tbl_Imagenes" Role="tbl_Imagenes" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_Estampas" Role="tbl_Estampas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Imagenes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Estampas">
+        <PropertyRef Name="Id_Imagen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Grupo__Id_Im__571DF1D5">
+    <End Type="BusinessModel.tbl_Imagenes" Role="tbl_Imagenes" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_Grupo_Estampas" Role="tbl_Grupo_Estampas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Imagenes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Grupo_Estampas">
+        <PropertyRef Name="Id_Imagen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Image__Id_Gr__0880433F">
+    <End Type="BusinessModel.tbl_grupoImagen" Role="tbl_grupoImagen" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_Imagenes" Role="tbl_Imagenes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_grupoImagen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Imagenes">
+        <PropertyRef Name="Id_GrupoImagen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Plant__Id_Im__5441852A">
+    <End Type="BusinessModel.tbl_Imagenes" Role="tbl_Imagenes" Multiplicity="1" />
+    <End Type="BusinessModel.tbl_Plantillas_Estampas" Role="tbl_Plantillas_Estampas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Imagenes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Plantillas_Estampas">
+        <PropertyRef Name="Id_ImagenPlantilla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Plant__Id_im__59063A47">
+    <End Type="BusinessModel.tbl_Imagenes" Role="tbl_Imagenes" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_Plantillas" Role="tbl_Plantillas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Imagenes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Plantillas">
+        <PropertyRef Name="Id_imagen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Plant__Id_im__59FA5E80">
+    <End Type="BusinessModel.tbl_Imagenes" Role="tbl_Imagenes" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_Plantillas" Role="tbl_Plantillas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Imagenes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Plantillas">
+        <PropertyRef Name="Id_imagenPlantilla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Produ__Id_Im__534D60F1">
+    <End Type="BusinessModel.tbl_Imagenes" Role="tbl_Imagenes" Multiplicity="0..1" />
+    <End Type="BusinessModel.tbl_Productos" Role="tbl_Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Imagenes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Productos">
+        <PropertyRef Name="Id_Imagen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

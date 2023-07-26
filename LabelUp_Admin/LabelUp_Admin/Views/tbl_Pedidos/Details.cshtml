@@ -1,0 +1,77 @@
+﻿@model LabelUp_Admin.Models.tbl_Pedidos
+@using Microsoft.AspNet.Identity
+
+<div class="container">
+    <div class="row">
+        <div class="font-LabelUp col-md-10" style="background-color: #ffd800; height: 40px; text-align: center;">
+            <h4 style="padding-top:2px;">Detalle Pedido Numero @Model.Id</h4>
+        </div>
+        <div class="font-LabelUp col-md-2" style="background-color: #ffd800; height: 40px; text-align: center;">
+            @{ LabelUp_Admin.Controllers.CustomController _ctrol1 = new LabelUp_Admin.Controllers.CustomController();
+                if (_ctrol1.ValidarAdmin(User.Identity.GetUserName()))
+                {
+                    @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-light", @style = "margin-top:3px;" })
+                }
+                else
+                {
+                    @Html.ActionLink("Volver", "CustomerOrders", null, new { @class = "btn btn-light", @style = "margin-top:3px;" })
+                }
+            }
+        </div>
+        <div class="col-md-12" style="height:58vh; overflow-y:auto; margin-top:5px;">
+            @foreach (var item in Model.tbl_cart)
+            {
+                <div class="row" style="border-bottom: 2px solid #83499e; height: 190px;text-align:left;">
+                    <div class="col-md-2" style="padding-top:15px;">
+                        <img src="@Href(item.tbl_Plantillas_Estampas.tbl_Imagenes.URI)" alt="@item.Id" style="width:180px; height:160px; border: 2px solid #83499e" />
+                    </div>
+                    <div class="col-md-4 font-LabelUp" style="padding-top:5px;">
+                        <h3>@item.tbl_Productos.Nombre</h3>
+                        <h4>Precio: $@item.PrecioUnitario</h4>
+                        <div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Cantidad: @item.Cantidad</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Total: $ @item.Total</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        @{ LabelUp_Admin.Controllers.CustomController _ctrol2 = new LabelUp_Admin.Controllers.CustomController();
+                            if (_ctrol2.ValidarAdmin(User.Identity.GetUserName()))
+                            {
+                                <div>
+                                    <h3 style="padding-top:5px; text-align:center;background-color:#f8f9a7" class="font-LabelUp">Parametros</h3>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4>Texto 1: @item.Param1</h4>
+                                        <h4>Texto 2: @item.Param2</h4>
+                                        <h4>Texto 3: @item.Param3</h4>
+                                        <h4>Texto 4: @item.Param4</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 style="background-color:@item.FontColor;color:#c6bfbf">Color: @item.FontColor</h4>
+                                        <h4>Fonts: @item.FontName</h4>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+

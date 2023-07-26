@@ -1,0 +1,180 @@
+﻿@model LabelUp_Admin.Models.tbl_Plantillas
+
+
+@{
+    ViewBag.Title = "Formato";
+}
+
+@Html.Partial("_customError")
+
+
+<h2>Formato</h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8" style="width: 800px;">
+            <img id="img1" name="img1" style="width: 700px; height: 500px; border: none; position: absolute; top: 10px;" src="@Href(Model.tbl_Imagenes1.URI)" />
+            <canvas id="canvas1" onMousedown="InCoords(event)" onMouseup="OutCoords(event)" style="width: 700px; height: 500px; border: 2px solid #8c579f; background-color: transparent; position: absolute; top: 10px; z-index: 97; "></canvas>
+        </div>
+        <div class="col-md-4" style="height:650px;">
+            <div class="col-md-12 [dbo].[tbl_PrametrosPersonalizacion] where id > 72">
+                <form action="CreateFormato" method="post">
+                    <input type="text" id="Id_Plantilla" name="Id_Plantilla" value="@Model.Id" style="width:35px;border-radius:5px;visibility:hidden;" />
+                    <input type="text" id="X" name="X" value="" style="width:35px;border-radius:5px;" />
+                    <input type="text" id="Y" name="Y" value="" style="width:35px;border-radius:5px;" />
+                    <input type="text" id="W" name="W" value="" style="width:35px;border-radius:5px;" />
+                    <input type="text" id="H" name="H" value="" style="width:35px;border-radius:5px;" />
+                    <label for="cars">Seleccionar texto</label>
+                    <select name="CuadroTexto" id="cars" style="width:150px;height:27px; border-radius:5px; border:1px solid gray;">
+                        <option value="1">Texto 1</option>
+                        <option value="2">Texto 2</option>
+                        <option value="3">Texto 3</option>
+                        <option value="4">Texto 4</option>
+                    </select>
+                    <label for="cars">Zoom</label>
+                    <select name="Zoom" id="cars" style="width:150px;height:27px; border-radius:5px; border:1px solid gray;">
+                        <option value="100">100</option>
+                        <option value="80">80</option>
+                        <option value="60">60</option>
+                        <option value="40">40</option>
+                        <option value="40">30</option>
+                    </select>
+                    <input type="submit" class="btn btn-primary" value="Agregar" />
+                </form>
+            </div>
+            <br />
+            <div class="col-md-12" style="overflow-y: auto; overflow-x: hidden; width:650px; height: 420px; border: 2px solid #8c579f">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="th-sm">Texto</th>
+                            <th class="th-sm">Coordenadas (MIzq - MSup - MDer - MInf) </th>
+                            <th class="th-sm">Zoom</th>
+                            <th class="th-sm"></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in (ICollection<LabelUp_Admin.Models.tbl_PrametrosPersonalizacion>)ViewBag.lstFormato)
+                        {
+                            <tr>
+
+                                <td style="vertical-align:middle; width:90px;">Texto @item.CuadroTexto (@item.Id)</td>
+
+                                <td style="vertical-align:middle; width:650px;" class="form-inline">
+                                    <form action="UpdateCoordenadas" method="post">
+                                        <input type="number" name="id" id="id" value="@item.Id" style="width:1px;border:none; font-size:1pt; visibility:hidden;" class="form-control" />
+                                        <input type="number" name="x" id="x" value="@item.X" style="width:65px;border:none; font-size:10pt" class="form-control" />
+                                        <input type="number" name="y" id="y" value="@item.Y" style="width:65px;border:none; font-size:10pt" class="form-control" />
+                                        <input type="number" name="w" id="w" value="@item.W" style="width:65px;border:none; font-size:10pt" class="form-control" />
+                                        <input type="number" name="h" id="h" value="@item.H" style="width:65px;border:none; font-size:10pt" class="form-control" />
+                                        <input type="image" src="~/Content/imagenes/site/ok.png" alt="submit" class="form-control" />
+                                    </form>
+
+                                </td>
+
+                                <td style="vertical-align:middle;">@item.Zoom</td>
+                                <td style="vertical-align: middle; text-align: right;">
+                                    <a href="@Url.Action("DeleteParametro", "tbl_Plantillas",new { idp = item.Id, pid = item.Id_Plantilla })">
+                                        <img src="@Url.Content("/Content/imagenes/iconos/iconos_basura.png")" class="btn-grid" />
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    window.onload = function (e) {
+        @ViewBag.scriptDib
+    }
+
+
+    function InCoords(event) {
+        var x = event.clientX;
+        var y = event.clientY;
+        document.getElementById("X").value = x;
+        document.getElementById("Y").value = y;
+    }
+
+    function OutCoords(event) {
+
+        var x = event.clientX;
+        var y = event.clientY;
+        document.getElementById("W").value = x;
+        document.getElementById("H").value = y;
+        creatDiv();
+    }
+
+    function creatDiv() {
+        const div = document.createElement("div");
+
+        var x = document.getElementById("X").value;
+        var y = document.getElementById("Y").value;
+        var w = document.getElementById("W").value;
+        var h = document.getElementById("H").value;
+
+        div.style.position = "absolute";
+        div.style.left = x + "px";
+        div.style.top = y + "px";
+        div.style.width = w - x + "px";
+        div.style.height = h - y + "px";
+        div.style.backgroundColor = "#e9f46f";
+        div.style.zIndex = 99;
+        div.style.color = "write";
+        div.style.textAlign = "center";
+
+        document.body.appendChild(div)
+
+    }
+
+    function creatDivMt(X, Y, W, H, ctext, fsize, id) {
+        const div = document.createElement("div");
+
+        var x = X;
+        var y = Y;
+        var w = W;
+        var h = H;
+
+        div.id = id;
+        div.style.position = "absolute";
+        div.style.left = x + "px";
+        div.style.top = y + "px";
+        div.style.width = w - x + "px";
+        div.style.height = h - y + "px";
+
+        div.style.color = "black";
+        div.style.textAlign = "center";
+        div.style.justifyContent = "center";
+        div.style.alignItems = "center";
+        div.style.verticalAlign = "middle";
+
+        div.style.borderRadius = "10px";
+        div.innerHTML = "Texto" + ctext + " (" + id + ")";
+        div.style.fontSize = fsize + "pt";
+        div.style.backgroundColor = "#e9f48f";
+        div.style.zIndex = 99;
+        document.body.appendChild(div);
+    }
+
+    function LoadCanvas() {
+        var canvas = document.getElementById("canvas1");
+        var context = canvas.getContext("2d");
+        var grd = context.createLinearGradient(0, 0, 200, 0);
+
+        grd.addColorStop(0, "red");
+        context.fillStyle = grd;
+
+        var x = document.getElementById("X").value;
+        var y = document.getElementById("Y").value;
+        var w = document.getElementById("W").value;
+        var h = document.getElementById("H").value;
+
+        context.fillRect(x - 76, y - 248, 10, 10);
+    };
+</script>
+

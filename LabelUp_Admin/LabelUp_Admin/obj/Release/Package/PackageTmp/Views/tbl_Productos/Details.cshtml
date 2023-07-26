@@ -1,0 +1,76 @@
+﻿@model LabelUp_Admin.Models.tbl_Productos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="col-sm-11"><h2>Agregar Plantilla a -  @Model.Nombre</h2></div>
+
+
+<div class="container-fluid">
+    <div class="row ">
+
+        <div class="col-sm-6">
+            <div><h3>Plantillas <span class="badge badge-light">@Model.tbl_Productos_Plantillas.Where(t => t.Activo == false).Count()</span> </h3></div>
+            <div class="col-sm-11 scrollbar-details">
+                <table class="table">
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.tbl_Productos_Plantillas.Where(t => t.Activo == false))
+                        {
+                            <tr>
+                                <td style="width: 100px; vertical-align: middle;"><img class="card-img-top " style="width:40px; height:40px;" src="@Href(item.tbl_Plantillas.tbl_Imagenes1.URI)" alt="@item.tbl_Plantillas.tbl_Imagenes1.Nombre"></td>
+                                <td style="vertical-align:middle;">@item.tbl_Plantillas.Nombre</td>
+                                <td style="vertical-align:middle; text-align:right;">
+                                    <a href="@Url.Action("SetPlntilla", "tbl_Productos",new { id = item.Id })">
+                                        <img src="@Url.Content("/Content/imagenes/iconos/iconos_link.png")" title="Vincular" class="btn-grid" />
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div><h3>Vinculadas <span class="badge badge-light">@Model.tbl_Productos_Plantillas.Where(t => t.Activo == true).Count()</span></h3></div>
+            <div class="col-sm-11 scrollbar-details ">
+                <table class="table ">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.tbl_Productos_Plantillas.Where(t => t.Activo == true))
+                        {
+                        <tr>
+                            <td style="width: 100px; vertical-align: middle;"><img class="card-img-top " style="width:40px; height:40px;" src="@Href(item.tbl_Plantillas.tbl_Imagenes1.URI)" alt="@item.tbl_Plantillas.tbl_Imagenes1.Nombre"></td>
+                            <td style="vertical-align:middle;">@item.tbl_Plantillas.Nombre</td>
+                            <td style="vertical-align:middle;">
+                                @using (Html.BeginForm("SetPrecio","tbl_Productos", FormMethod.Post))
+                                {
+                                    <div class="form-horizontal " style="height:10px;">
+                                        <div class="form-group ">
+                                            <input id="btnfiltrar" type="submit" value="Actualizar" class="btn btn-info pull-right" />
+                                            <input id="costo" name="costo" type="text" class="form-control pull-right col-md-10" style="width:100px;" value="@item.Precio" />                                            
+                                            <input id="id" name="id" value="@item.Id" class="form-control pull-right col-md-10" style="visibility:hidden" />
+                                        </div>
+                                    </div>
+                                }
+                            </td>
+                            <td style="vertical-align:middle; text-align:right;">
+                                <a href="@Url.Action("SetPlntilla", "tbl_Productos",new { id = item.Id })">
+                                    <img src="@Url.Content("/Content/imagenes/iconos/iconos-33.png")" title="Desvincular" class="btn-grid" />
+                                </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-info" })

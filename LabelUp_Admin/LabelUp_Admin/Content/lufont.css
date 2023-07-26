@@ -1,0 +1,55 @@
+﻿@font-face {
+    font-family: "Tagit-Font";
+    src: url("../fonts/Montserrat-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "PinyonScript";
+    src: url("../fonts/PinyonScript-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Comics";
+    src: url("../fonts/Comic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Papyrus";
+    src: url("../fonts/Papyrus.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Ariblk";
+    src: url("../fonts/ariblk.ttf") format("truetype");
+}
+
+   
+@font-face {
+    font-family: 'Eras-Bold-ITC';
+    src: url('../fonts/Eras Bold ITC.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'hobo';
+    src: url('../fonts/hobo.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Kristen-ITC';
+    src: url('../fonts/Kristen-ITC_27069.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MAIAN';
+    src: url('../fonts/MAIAN.TTF') format('truetype');
+}
+
+@font-face {
+    font-family: 'segoepr';
+    src: url('../fonts/segoepr.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Snap-ITC';
+    src: url('../fonts/Snap ITC.ttf') format('truetype');
+}

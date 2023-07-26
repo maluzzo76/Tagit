@@ -1,0 +1,144 @@
+﻿body {
+}
+
+
+
+.btn-back {
+    width: 35px;
+    height: 35px;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+    .btn-back:hover {
+        -webkit-transform: scale(1.35);
+        -moz-transform: scale(1.35);
+        -ms-transform: scale(1.35);
+        -o-transform: scale(1.35);
+        transform: scale(1.35);
+    }
+
+.btn-grid {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    color: transparent;
+    margin-right: 10px;
+    background-color: white;
+    border: none;
+}
+
+    .btn-grid:hover {
+        -webkit-transform: scale(1.35);
+        -moz-transform: scale(1.35);
+        -ms-transform: scale(1.35);
+        -o-transform: scale(1.35);
+        transform: scale(1.35);
+    }
+
+.imageMenu {
+    width: 30px;
+    height: 30px;
+    left: 0;
+    padding-left: 0px;
+}
+
+.sidebar {
+    height: 100%;
+    width: 50px;
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    left: 0;
+    background-image: linear-gradient(to right, #F4F4F4 80%, #d0cece);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 30px;
+}
+
+    .sidebar a {
+        padding: 0px 8px 8px 7px;
+        text-decoration: none;
+        font-size: 25px;
+        color: `;
+        display: block;
+        top: 0;
+        transition: 0.3s;
+    }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+    .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        left: 1px;
+        font-size: 36px;
+        margin-left: 0px;
+    }
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+}
+
+    .openbtn:hover {
+        background-color: #444;
+    }
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+
+        .sidebar a {
+            font-size: 18px;
+        }
+}
+
+
+@media screen and (max-width: 3000px) {
+    .navlogo {
+        position: absolute;
+        zoom: 15%;
+        margin-top: -20px;
+        left: 2500px;
+    }
+
+}
+
+@media screen and (max-width: 2000px) {
+    .navlogo {
+        position: absolute;
+        zoom: 15%;
+        margin-top: -20px;
+        left: 1000px;
+    }
+   
+}
+
+@media screen and (max-width: 600px) {
+    .navlogo {
+        position: absolute;
+        zoom: 15%;
+        margin-top: 0px;
+        left: 0px;
+    }
+    .LoginPosition {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        font-size: 8pt;
+    }
+}

@@ -1,0 +1,69 @@
+﻿@model LabelUp_Admin.Models.tbl_Pedidos
+
+@{
+    ViewBag.Title = "payOrder";
+}
+
+<form action="/tbl_Pedidos/FinalizarPedido" method="post" class="form-inline"> <!--QA-->
+    <div class="container font-LabelUp">
+        <div class="row" style="text-align:left;">
+            <div class="col-md-6">
+                <div class="form-group font-LabelUp" style="background-color: #ffd800; height: 40px; text-align: center;">
+                    <h4 style="width:450px;">Datos de Facturacion</h4>
+                </div>
+                <div class="form-group font-LabelUp" style="margin-top:5px;">
+                    <label style="width:250px;">1) Nombre y Apellido</label>
+                    <input id="nombreapellidofac" name="nombreapellidofac" class="form-control" />
+                </div>
+                <div class="form-group font-LabelUp">
+                    <label style="width:250px;">2) Direccion de facturacion</label>
+                    <input id="direccionfac" name="direccionfac" class="form-control" />
+                </div>
+                <div class="form-group font-LabelUp">
+                    <label style="width:250px;">3) Piso</label>
+                    <input id="pisofac" name="pisofac" class="form-control" />
+                </div>
+                <div class="form-group font-LabelUp">
+                    <label style="width:250px;">3) Departamento</label>
+                    <input id="dtofac" name="dtofac" class="form-control" />
+                </div>
+                <div class="form-group font-LabelUp">
+                    <label style="width:250px;">4) Codigo Postal</label>
+                    <input id="cpfac" name="cpfac" class="form-control" />
+                </div>               
+            </div>
+            <div class="col-md-6">
+                <div class="form-group font-LabelUp" style="background-color: #ffd800; height: 40px;  text-align: center;">
+                    <h4 style="width:450px;">Datos de Entrega</h4>
+                </div>
+                <div class="form-group font-LabelUp" style="margin-top:5px;">
+                    <label style="width:250px;">5)Nombre y Apellido</label>
+                    <input id="nombreapellidoent" name="nombreapellidoent" class="form-control" />
+                </div>
+                <div class="form-group font-LabelUp">
+                    <label style="width:250px;">6) Direccion de facturacion</label>
+                    <input id="direccionEnt" name="direccionEnt" class="form-control" />
+                </div>
+                <div class="form-group font-LabelUp">
+                    <label style="width:250px;">7) Piso</label>
+                    <input id="pisoent" name="pisoent" class="form-control" />
+                </div>
+                <div class="form-group font-LabelUp">
+                    <label style="width:250px;">8) Departamento</label>
+                    <input id="dtoent" name="dtoent" class="form-control" />
+                </div>
+                <div class="form-group font-LabelUp">
+                    <label style="width:250px;">9) Codigo Postal</label>
+                    <input id="cpent" name="cpent" class="form-control" />
+                </div>
+                <div class="form-group font-LabelUp" style="font-size:16pt;">
+                    <input id="id" name="id" value="@ViewBag.Id" style="visibility:hidden" />
+                    <input type="submit" class="btn btn-primary" style="color:white;" value="Confirmar" />
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+
+</form>

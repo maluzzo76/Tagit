@@ -1,0 +1,19 @@
+﻿@model LabelUp_Admin.Models.tbl_Imagenes
+
+@Html.Partial("_customError")
+
+<h3>Confirma que desea eliminar la Imagen?</h3>
+<div>
+    <img class="card-img-top " style="width:100px; height:100px;" src="@Href(Model.URI)" alt="@Model.Nombre">
+</div>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <br />
+        <div class="form-actions no-color">
+            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-info" })
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </div>
+    }
+</div>

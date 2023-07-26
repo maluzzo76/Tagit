@@ -1,0 +1,50 @@
+﻿@model LabelUp_Admin.Models.tbl_Estampa_GrupoEstampa
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_Estampa_GrupoEstampa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Eliminado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Eliminado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Estampas.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Estampas.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Grupo_Estampas.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Grupo_Estampas.Codigo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

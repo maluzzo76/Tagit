@@ -1,0 +1,441 @@
+﻿.font-LabelUp {
+    font-family: Tagit-Font;
+}
+
+.font-menu {
+    font-size: 17pt;
+}
+
+    .font-menu:hover {
+        font-size: 17pt;
+        color: black;
+    }
+
+.font-userName {
+    font-size: 10pt;
+}
+
+
+
+
+    .NavMenu-size {
+        width: 200px;
+    }
+
+
+.botoneraRegistro {
+    text-decoration: none;
+    padding-top: 8px;
+    background-color: #B81A5D;
+    position: absolute;
+    color: #FFFFFF;
+    width: 350px;
+    top: 0px;
+    left: 38%;
+    z-index: 98;
+    text-align: center;
+}
+
+        .botoneraRegistro li {
+            display: inline;
+            text-decoration: none;
+            font-size: 10pt;
+            font-family: Tagit-Font;
+            color: #FFFFFF;
+        }
+
+    .botoneralogin {
+        text-decoration: none;
+        padding-top: 10px;
+        background-color: #B81A5D;
+        position: absolute;
+        color: #FFFFFF;
+        width: 400px;
+        top: 0px;
+        left: 35%;
+        z-index: 98;
+        text-align:center;
+    }
+
+        .botoneralogin li {
+            margin-top:-4px;
+            display: inline;
+            text-decoration: none;
+            font-size: 10pt;
+            font-family: Tagit-Font;
+            color: #FFFFFF;
+        }
+
+
+@media screen and (max-width: 600px) {
+
+    .NavMenu-size {
+        width: 50px;
+    }
+
+
+    .botoneraRegistro {
+        text-decoration: none;
+        padding-top: 8px;
+        background-color: #B81A5D;
+        position: absolute;
+        color: #FFFFFF;
+        width: 100%;
+        height: 40px;
+        top: 0px;
+        left: 0px;
+        z-index: 99;
+        text-align:center;
+    }
+
+
+        .botoneraRegistro li {
+            display: inline;
+            text-decoration: none;
+            font-size: 8pt;
+            font-family: Tagit-Font;
+            color: #FFFFFF;
+        }
+
+    .botoneralogin {
+        text-decoration: none;
+        padding-top: 8px;
+        background-color: #B81A5D;
+        position: absolute;
+        color: #FFFFFF;
+        width: 350px;
+        height: 40px;
+        top: 0px;
+        left: 50%;
+        z-index: 98;
+    }
+
+        .botoneralogin li {
+            display: inline;
+            text-decoration: none;
+            font-size: 10pt;
+            font-family: Tagit-Font;
+            color: #FFFFFF;
+        }
+}
+
+
+
+
+    .Contact {
+        width: 50%;
+        vertical-align: central;
+    }
+
+        .Contact form {
+        }
+
+        .Contact div {
+        }
+
+        .Contact h1 {
+            font-family: Tagit-Font;
+            color: #949393;
+        }
+
+        .Contact h6 {
+            font-family: Tagit-Font;
+            color: #949393;
+        }
+
+        .Contact p {
+            padding-top: 10px;
+            font-family: Tagit-Font;
+            color: #949393;
+        }
+
+        .Contact input, textarea {
+            width: 300px;
+            font-family: Tagit-Font;
+            background-color: #fedc00;
+            border: none;
+        }
+
+        .Contact button {
+            margin-top: 8px;
+            font-family: Tagit-Font;
+            color: white;
+            font-size: 10pt;
+            background-color: #b7195c;
+            border: none;
+            height: 30px;
+        }
+
+
+
+    .render {
+        margin-top: 100px;
+        height: 65vh;
+        width: 99.9%;
+        text-align: center;
+    }
+
+    .bannerPrincipal {
+        border: none;
+        margin-top: -50px;
+        height: 95vh;
+        width: 100%;
+        background-color: #AED4EA;
+        background-position: center;
+        background: url(../Content/imagenes/site/splash.jpg);
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    .bannerSecundario {
+        border: none;
+        width: 100%;
+    }
+
+    .myCorousel {
+        width: 100%;
+        display: none;
+    }
+
+    .cart {
+        background: url(../Content/imagenes/site/cart.png);
+        background-repeat: no-repeat;
+    }
+
+    .listHorizontal {
+        display: inline;
+    }
+
+
+    .navbar-principal {
+        padding-top: 50px;
+        border: none;
+        background-color: transparent;
+        /*background-image: url(imagenes/site/nav.png);*/
+        background-repeat: no-repeat;
+        z-index: 96;
+        height: 145px;
+    }
+
+.circle-div-face {
+    height: 40px;
+    width: 40px;
+    background-image: url("imagenes/iconos/face.png");
+    background-size: 40px;
+    border-radius: 100%;
+    position: fixed;
+    bottom: 21px;
+    right: 25px;
+    z-index: 99;
+}
+
+.circle-div-inst {
+    height: 40px;
+    width: 40px;
+    background-image: url("imagenes/iconos/inst.png");
+    background-size: 40px;
+    border-radius: 100%;
+    position: fixed;
+    bottom: 21px;
+    right: 60px;
+    z-index: 99;
+}
+
+
+    .navbar {
+    }
+
+
+        .navbar .navbar-brand {
+            color: #575756;
+            font-family: LabelUp;
+            font-size: 10pt;
+        }
+
+        .navbar navbar-right {
+            color: black;
+        }
+
+        .navbar img {
+            /*zoom: 22%;
+        position: absolute;
+        margin-left: -65px;*/
+        }
+
+
+    .navbar-TextColor {
+        color: #575756;
+    }
+
+    /* Set padding to keep content from hitting the edges */
+    .body-content {
+        margin-top: 100px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+    .dl-horizontal dt {
+        white-space: normal;
+    }
+
+    /* Set width on the form input elements since they're 100% wide by default */
+    input,
+    select,
+    textarea {
+        max-width: 280px;
+    }
+
+    .br-10 {
+        border-radius: 10px;
+    }
+
+    .selectSite img {
+        border-radius: 80px;
+        /*box-shadow: 0px 10px 18px #888888;*/
+    }
+
+    .selectSite li p {
+        position: absolute;
+        width: 140px;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%,-00%);
+        -ms-transform: translate(-50%,0%);
+        text-align: center;
+        color: white;
+        background-color: white;
+        border: 2px solid #78A865;
+        border-radius: 10px;
+    }
+
+    .selectSite li a:hover {
+        background-color: #d2f7c3;
+        border-radius: 90px;
+        opacity: 0.8;
+    }
+
+    .foote_page_divLine {
+        border-top: 1px solid #808080;
+        border-bottom: 1px solid #808080;
+    }
+
+
+@media screen and (max-width: 600px) {
+
+   
+    .foote_page {
+        visibility:hidden;
+    }
+}
+
+
+    .foote_page {
+        background-color: #ffffff;
+        position: absolute;
+        height: 10vh;
+        overflow: hidden;
+        bottom: -5px;
+    }
+
+
+
+        .foote_page img {
+            padding-top: 70px;
+            padding-bottom: 70px;
+            zoom: 10%;
+        }
+
+        .foote_page ul {
+            margin-top: 10px;
+        }
+
+            .foote_page ul li {
+                font-family: Tagit-Font;
+                font-size: 10pt;
+                color: black;
+            }
+
+                .foote_page ul li a {
+                    font-family: Tagit-Font;
+                    font-size: 10pt;
+                    color: black;
+                }
+
+
+    /*buttons*/
+    .btn-seleccionar {
+        font-family: Tagit-Font;
+        font-size: 16pt;
+        background-color: #f4c32a;
+        color: #FFFFFF;
+        width: 150px;
+    }
+
+
+    /*Colores*/
+
+    .bg-principal {
+        background-color: #B81A5D;
+    }
+
+    .bg-violeta {
+        background-color: #83499e;
+    }
+
+    .bg-naranja {
+        background-color: #EFC17B;
+    }
+
+    .bg-verde {
+        background-color: #78A865;
+    }
+
+
+    .fc-principal {
+        color: #575756;
+    }
+
+    .fc-login {
+        color: #FFFFFF;
+    }
+
+    .fc-violeta {
+        color: #8c579f;
+    }
+
+    .fc-naranja {
+        color: #f1bb64;
+    }
+
+    .fc-verde {
+        color: #78A865;
+    }
+
+
+    /*--------------SCROLL----------------*/
+    /* whidt */
+    ::-webkit-scrollbar {
+        width: 15px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px #c7c7c6;
+        border-radius: 8px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #fb8f1b;
+        border-radius: 10px;
+    }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #DBAA00;
+        }
+
+    /*----------------------------------*/

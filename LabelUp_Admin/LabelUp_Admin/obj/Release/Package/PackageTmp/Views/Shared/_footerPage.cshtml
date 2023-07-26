@@ -1,0 +1,26 @@
+﻿@{ if (!@Request.Url.ToString().Contains("/Pago/"))
+    {
+    <div class="container foote_page  " id="footerpage" >
+        <div class="row foote_page_divLine font-LabelUp">
+            <div class="col-md-2" style="padding-top:0px;">
+                <img src="~/Content/imagenes/site/logo_gris.png" alt="footer" />
+            </div>
+            <div class="col-md-5 font-LabelUp" style="padding-top:12px">
+                <ul>
+                    <li style="display: inline-block;" class="font-LabelUp">@Html.ActionLink("Mundo tag!t", "Index", "Home", routeValues: null, htmlAttributes: new { id = "home", @class = "font-LabelUp" })</li>
+                    <li style="display: inline-block;" class="font-LabelUp">@Html.ActionLink("- Productos", "Index", "Store", routeValues: null, htmlAttributes: new { id = "step1", @class = "font-LabelUp" })</li>
+                    <li style="display: inline-block;" class="font-LabelUp">- Novedades </li>
+                    <li style="display: inline-block;" class="font-LabelUp">- Contactos</li>
+                </ul>
+            </div>
+            <div class="col-md-5 d-flex" style="padding-top:15px">
+                <form class="form-inline align-self-center ">
+                    <input class="form-control" id="fEmail" type="email" placeholder="Enter email" />
+                    <input type="button" class="btn" value="Subscribirme" />
+                </form>
+            </div>
+        </div>       
+
+    </div>
+    }
+    }

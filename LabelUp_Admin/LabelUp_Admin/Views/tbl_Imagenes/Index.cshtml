@@ -1,0 +1,77 @@
+﻿@model LabelUp_Admin.Controllers.PaginadorGenerico<LabelUp_Admin.Models.tbl_Imagenes>
+
+@{
+    ViewBag.Title = "Imagenes";
+
+}
+
+@Html.Partial("_customError")
+
+<h2>Imagenes</h2>
+
+<button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("Index", "FileUpload")'">
+    Agregar Imagen
+    <span class="badge badge-light">@Model.TotalRegistros</span>
+</button>
+
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal ">
+        <div class="form-group ">
+            <input id="btnfiltrar" type="submit" value="Buscar" class="btn btn-info pull-right" />
+            @Html.TextBox("SearchString", null, new { @class = "form-control pull-right col-md-10", autocomplete = "off", @placeholder = "Nombre" })
+            @Html.TextBox("SearchGrupo", null, new { @class = "form-control pull-right col-md-10", autocomplete = "off", @placeholder = "Grupo" })
+        </div>
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="th-sm">Icono</th>
+            <th class="th-sm">Nombre</th>
+            <th class="th-sm">Tamaño</th>
+            <th class="th-sm">Tipo</th>
+            <th class="th-sm">Grupo</th>
+            <th class="th-sm"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Resultado)
+        {
+            <tr>
+                <td style="width: 100px; vertical-align: middle;"><img class="card-img-top " style="width:40px; height:40px;" src="@Href(item.URI)" alt="@item.Nombre"></td>
+                <td style="vertical-align:middle;">@item.Nombre</td>
+                <td style="vertical-align:middle;">@item.Tamanio Byte</td>
+                <td style="vertical-align:middle;">@item.Extencion</td>
+                <td style="vertical-align:middle;">@item.tbl_grupoImagen.Nombre</td>
+                <td style="vertical-align: middle; text-align: right;">
+                    <a href="@Url.Action("Edit", "tbl_Imagenes",new { id = item.Id })">
+                        <img src="@Url.Content("/Content/imagenes/iconos/iconos_Lapiz.png")" class="btn-grid" />
+                    </a>
+                    <a href="@Url.Action("Delete", "tbl_Imagenes",new { id = item.Id })">
+                        <img src="@Url.Content("/Content/imagenes/iconos/iconos_basura.png")" class="btn-grid" />
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="container-fluid">
+    <ul class="pagination  pull-right">
+        @for (int p = 1; p < Model.TotalPaginas + 1; p++)
+        {
+            if (p == Model.PaginaActual)
+            {
+                <li class="active">@Html.ActionLink(p.ToString(), "Index", new { pagina = p })</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink(p.ToString(), "Index", new { pagina = p })</li>
+            }
+        }
+    </ul>
+</div>
+

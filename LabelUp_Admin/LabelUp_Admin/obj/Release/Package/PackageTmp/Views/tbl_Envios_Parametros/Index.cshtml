@@ -1,0 +1,72 @@
+﻿@model LabelUp_Admin.Controllers.PaginadorGenerico<LabelUp_Admin.Models.tbl_Envios_Parametros>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Parametros de Envio</h2>
+
+<button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("Create", "tbl_Envios_Parametros")'">
+    Agregar Parametro
+    <span class="badge badge-light">@Model.TotalRegistros</span>
+</button>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal ">
+        <div class="form-group ">
+            <input id="btnfiltrar" type="submit" value="Buscar" class="btn btn-info pull-right" />
+            @Html.TextBox("SearchString", null, new { @class = "form-control pull-right col-md-10", autocomplete = "off" })
+        </div>
+    </div>
+}
+
+
+<table class="table">
+    <tr>
+        <th class="th-sm">Codigo Postal</th>
+        <th class="th-sm">Localidad</th>
+        <th class="th-sm">Costo de envio</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Resultado)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo_Postal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Costo_Envio)
+            </td>
+           
+            <td style="vertical-align: middle; text-align: right;">
+                <a href="@Url.Action("Edit", "tbl_Envios_Parametros",new { id = item.Id })">
+                    <img src="@Url.Content("/Content/imagenes/iconos/iconos_Lapiz.png")" class="btn-grid" />
+                </a>
+                <a href="@Url.Action("Delete", "tbl_Envios_Parametros",new { id = item.Id })">
+                    <img src="@Url.Content("/Content/imagenes/iconos/iconos_basura.png")" class="btn-grid" />
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="container-fluid">
+    <ul class="pagination  pull-right">
+        @for (int p = 1; p < Model.TotalPaginas + 1; p++)
+        {
+            if (p == Model.PaginaActual)
+            {
+                <li class="active">@Html.ActionLink(p.ToString(), "Index", new { pagina = p })</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink(p.ToString(), "Index", new { pagina = p })</li>
+            }
+        }
+    </ul>
+</div>

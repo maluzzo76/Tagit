@@ -1,0 +1,88 @@
+﻿@model LabelUp_Admin.Models.tbl_Productos
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Nuevo Producto</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Codigo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Codigo, new { htmlAttributes = new { @class = "form-control text-uppercase" } })
+            @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <textarea  style="min-width: 500px;  font-size: 10pt; resize: none;" class="form-control" rows="9" cols="80" id="Descripcion" name="Descripcion"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Id_Imagen, "Imagen", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle " type="button" data-toggle="dropdown">
+                    <img id="imgSel" src="~/UploadImage/noimage.png" alt="imgSel" style="width:30px; height:30px;" />
+                    Seleccionar Imagen
+                    <span class="caret "></span>
+                </button>
+                <ul class="dropdown-menu list-group">
+                    @foreach (var iImg in (IEnumerable<SelectListItem>)ViewBag.Id_Imagen)
+                    {
+                        <li><a onclick=" document.getElementById('Id_Imagen').value = @iImg.Value; $('#imgSel').attr('src','@Href(iImg.Text)');"><img src="@Href(iImg.Text)" alt="@iImg.Text" style="width:50px; height:50px;" />  @((new LabelUp_Admin.Models.BusinessEntities()).tbl_Imagenes.Find(int.Parse(iImg.Value)).Nombre)</a></li>
+                    }
+                </ul>
+                <input type="hidden" id="Id_Imagen" name="Id_Imagen" value="" />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Visible, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox" style="margin-left:20px;">
+                @Html.CheckBox("Visible")
+                @Html.ValidationMessageFor(model => model.Visible, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group ">
+        @Html.LabelFor(model => model.Is_Destacado, "Destacado", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox" style="margin-left:20px;">
+                @Html.CheckBox("Is_Destacado")
+                @Html.ValidationMessageFor(model => model.Is_Destacado, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-info" })
+        </div>
+    </div>
+</div>
+}
+

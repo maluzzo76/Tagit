@@ -1,0 +1,132 @@
+﻿@model LabelUp_Admin.Models.tbl_Pedidos
+@using Microsoft.AspNet.Identity
+
+<div class="container">
+    <div class="row">
+        <div class="font-LabelUp col-md-12" style="background-color: #ffd800; height: 40px; text-align: center;">
+            <h4 style="padding-top:2px; text-align:center;">Detalle Pedido Numero @Model.Id</h4>
+        </div>
+
+        <div class="col-md-12" style="height:28vh; overflow-y:auto; margin-top:10px ">
+            @foreach (var item in Model.tbl_cart)
+            {
+                <div class="row" style="border-bottom: 2px solid #83499e; height: 190px; text-align: left; margin-top: 10px">
+                    <div class="col-md-2" style="">
+                        <img src="@Href(item.tbl_Plantillas_Estampas.tbl_Imagenes.URI)" alt="@item.Id" style="width:180px; height:160px; border: 2px solid #83499e" />
+                    </div>
+                    <div class="col-md-4 font-LabelUp" style="padding-top:5px; text-align:left">
+                        <h3>@item.tbl_Productos.Nombre</h3>
+                        <h4 style="font-weight: bold;">
+                            PRECIO UNIT:
+                            <span style="font-weight:100"> $@item.PrecioUnitario</span>
+                        </h4>
+                        <div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 style="font-weight: bold;">
+                                        CANTIDAD:
+                                        <span style="font-weight:100">$ @item.Cantidad</span>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 style="font-weight: bold;">
+                                        TOTAL:
+                                        <span style="font-weight:100">$ @item.Total</span>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="border-left: 2px solid black; height: 160px; margin-top: 15px">
+
+                        @{ LabelUp_Admin.Controllers.CustomController _ctrol2 = new LabelUp_Admin.Controllers.CustomController();
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 style="font-weight: bold;">
+                                        TEXTO 1:
+                                        <span style="font-weight:100">@item.Param1</span>
+                                    </h4>
+                                    <h4 style="font-weight: bold;">
+                                        TEXTO 2:
+                                        <span style="font-weight:100">@item.Param2</span>
+                                    </h4>
+                                    <h4 style="font-weight: bold;">
+                                        TIPGRAFIA:
+                                        <span style="font-weight:100"> @item.FontName</span>
+                                    </h4>
+                                    <h4 style="font-weight: bold;">
+                                        COLOR:
+                                        <span style="font-weight:100; background-color:@item.FontColor;color:#c6bfbf"> @item.FontColor</span>
+                                    </h4>
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="row col-md-12" style="margin-top:15px; ">
+            <div class="col-lg-4">
+                <div style="background-color:#c2c0c0; height:200px;  width:98%">
+                    <h4 class="font-LabelUp" style="padding-top:5px; padding-left:5px; text-align:left; font-weight: bold;">
+                        SUBTOTAL:
+                        <span style="font-weight:100">$ @Model.tbl_cart.Sum(p => p.Total)</span>
+                    </h4>
+                    <h4 class="font-LabelUp" style="padding-top:5px; padding-left:5px; text-align:left; font-weight: bold;">
+                        ENVIO:
+                        <span style="font-weight:100">$ @Model.tbl_Envios_Parametros.Costo_Envio</span>
+                    </h4>
+                    <h4 class="font-LabelUp" style="padding-top:5px; padding-left:5px; text-align:left; font-weight: bold;">
+                        TOTAL:
+                        <span id="sTotal" name="sTotal" style="font-weight:100">$ @Model.Total </span>
+                    </h4>
+                    <h4 class="font-LabelUp" style="padding-top:5px; padding-left:5px; text-align:left; font-weight: bold;">
+                        CODIGO DE PAGO:
+                        <span id="sTotal" name="sTotal" style="font-weight:100"> @Model.MercadoPagoId </span>
+                    </h4>
+                    <h4 class="font-LabelUp" style="padding-top:5px; padding-left:5px; text-align:left; font-weight: bold;">
+                        ESTADO DEL PAGO:
+                        <span  style="font-weight:100"> @Model.MercadoPagoStatus </span>
+                    </h4>
+                </div>
+
+            </div>
+            <div class="col-lg-4" style="border-left: 2px solid black; height: 200px">
+                <h4 class="font-LabelUp" style="padding-top:5px; padding-left:5px; text-align:left; font-weight: bold;">
+                    DIRECCION DE FACTURACION:
+                </h4>
+                <h4 class="font-LabelUp" style="padding-top:5px; padding-left:5px; text-align:left; ">
+                    @Model.Facturacion_Nombre_Apellido
+                    @Model.Direccion_Facturacion
+                    @Model.Facturacion_Piso
+                    @Model.Facturacion_CP
+                    @Model.Facturacion_Dto
+                </h4>
+            </div>
+            <div class="col-lg-4" style="border-left: 2px solid black; height: 200px">
+                <h4 class="font-LabelUp" style="padding-top:5px; padding-left:5px; text-align:left; font-weight: bold;">
+                    DIRECCION DE ENTREGA:
+                </h4>
+                <h4 class="font-LabelUp" style="padding-top:5px; padding-left:5px; text-align:left; ">
+                    @Model.Entrga_Nombre_Apellido
+                    @Model.Direccion_Entrega
+                    @Model.Entrega_Piso
+                    @Model.Entrega_CP
+                    @Model.Entrega_Dto
+                </h4>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

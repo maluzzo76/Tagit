@@ -1,0 +1,829 @@
+﻿.Corrousel {
+    border: none;
+    width: 100%;
+    height: 20vh;
+}
+
+    .Corrousel div {
+        padding-top: 10px;
+        height: 20vh;
+    }
+
+    .Corrousel img {
+        top: -10px;
+        width: 100%;
+    }
+
+    .Corrousel a {
+        background-color: #AED4EA;
+        border-radius: 90px;
+        border: 3px solid #8E57A3;
+        font-size: 20pt;
+        padding: 5px 125px 5px 125px;
+    }
+
+
+.div-flotante {
+    padding: 5px 3px; /* Relleno del boton */
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    transition: all 300ms ease 0ms;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+}
+
+
+
+/* Accordion */
+.accordion {
+    background-color: white;
+    border-bottom: 1px solid #808080;
+    color: #444;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
+}
+
+    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+    .active, .accordion:hover {
+        background-color: #fff;
+    }
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 10px 18px;
+    background-color: white;
+    display: none;
+    overflow: auto;
+}
+
+    .panel img {
+        width: 100px;
+        height: 100px;
+    }
+
+        .panel img:hover {
+            width: 100px;
+            height: 100px;
+        }
+
+    .panel h4 {
+        height: 20px;
+    }
+
+.responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+.responsiveEdit {
+    max-width: 100%;
+    height: auto;
+    zoom: 50%;
+}
+
+.titulo {
+    margin-top: 0px;
+}
+
+    .titulo h4 h6 {
+        color: #808080;
+    }
+
+.titulo-Personalizaciom {
+    background-image: url(../Content/imagenes/site/fondo_select_01.png);
+    background-repeat: no-repeat;
+    text-align: center;
+    width: 250px;
+    height: 80px;
+    left: 10%;
+    top: 0px;
+    padding-top: 30px;
+    vertical-align: top;
+    font-family: Tagit-Font;
+    font-size: 20pt;
+    color: white;
+    background-color: transparent;
+    border: none;
+    /* transform: translate(-50%,5%);
+    -ms-transform: translate(-50%,30%);*/
+}
+
+.titulo-PersonalizacionLeft {
+    background: url(../Content/imagenes/site/fondo_select_grande.png);
+    background-repeat: no-repeat;
+    text-align: center;
+    width: 250px;
+    height: 100px;
+    padding-top: 30px;
+    bottom: 0;
+    text-align: center;
+    font-family: Tagit-Font;
+    font-size: 20pt;
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
+
+
+.storeTitulo {
+    font-family: Tagit-Font;
+    font-size: 20pt;
+    background-color: transparent;
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+}
+
+.subtitulo-personalizacion {
+    text-align: center;
+    font-family: Tagit-Font;
+    font-size: 20pt;
+    background-color: transparent;
+    border: none;
+}
+
+.store4Titulo {
+
+    font-size: 50pt;
+}
+
+
+
+.subtitulo4-personalizacion {
+    position: absolute;
+    top: 160px;
+    left: 45%;
+    text-align: center;
+    font-family: Tagit-Font;
+    font-size: 20pt;
+    background-color: transparent;
+    border: none;
+}
+
+.Store4SubTitulo {
+    font-family: Tagit-Font;
+    font-size: 12pt;
+    color: #8c579f;
+}
+
+.Store4Detalle {
+    margin-top: 0px;
+    font-family: Tagit-Font;
+    font-size: 12pt;
+    color: #8c579f;
+}
+
+.Store4Catidad {
+    margin-top: 10px;
+    font-family: Tagit-Font;
+    font-size: 14pt;
+    color: #8c579f;
+    width: 40px;
+    text-align: center;
+    border-radius: 1px;
+    border: 1px solid #8c579f;
+}
+
+@media only screen and (max-width: 1800px) {
+    body {
+        overflow: auto;
+    }
+
+
+    .store4Personalizar {
+        margin-top: 2px;
+        height: 500px;
+        margin-left: 100px;
+        width: 300px;
+    }
+
+        .store4Personalizar div {
+            width: 280px;
+            border-bottom: 1px solid #8c579f;
+        }
+}
+
+/*Mas chico*/
+@media only screen and (max-width: 1600px) {
+    body {
+        overflow: auto;
+    }
+
+
+
+    .store4Personalizar {
+        margin-top: 2px;
+        height: 500px;
+        margin-left: 150px;
+        width:300px;
+
+    }
+
+        .store4Personalizar div {
+            width: 280px;
+            border-bottom: 1px solid #8c579f;
+        }
+}
+
+@media only screen and (max-width: 1500px) {
+    body {
+        overflow: auto;
+    }
+
+
+
+    .store4Personalizar {
+        margin-top: 2px;
+        height: 500px;
+        margin-left: -820px;
+        width: 300px;
+    }
+
+        .store4Personalizar div {
+            width: 280px;
+            border-bottom: 1px solid #8c579f;
+        }
+}
+
+
+
+@media only screen and (max-width:760px) {
+
+    body {
+        overflow: auto;
+    }
+
+
+
+    .store4Personalizar {
+        height: 500px;
+        margin-left: 10px;
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width:400px) {
+
+    body {
+        overflow: auto;
+    }
+
+
+
+}
+
+body {
+    /*overflow: hidden;*/
+}
+
+.store4Personalizar {
+    margin-top: 2px;
+    height: 500px;
+    width: 300px;
+}
+
+    .store4Personalizar div {
+        width: 280px;
+        border-bottom: 1px solid #8c579f;
+        margin-top:10px;
+
+    }
+
+    .store4Personalizar label {
+        font-family: Tagit-Font;
+        font-size: 10pt;
+        font-weight: bold;
+        color: #8c579f;
+    }
+
+    .store4Personalizar input {
+        font-family: Tagit-Font;
+        font-size: 10pt;
+        color: #8c579f;
+        border: 1px solid #8c579f;
+        border-radius: 1px;
+        width: 200px;
+    }
+
+        .store4Personalizar input[type=checkbox] {
+            margin-top: 10px;
+            font-family: Tagit-Font;
+            font-size: 12pt;
+            font-weight: bold;
+            color: #8c579f;
+            border: 1px solid #8c579f;
+            border-radius: 1px;
+            width: 20px;
+        }
+
+        .store4Personalizar input[type="color"] {
+            border-radius: 90px;
+            width: 32px;
+            border: none;
+        }
+
+    .store4Personalizar select {
+        font-family: Tagit-Font;
+        font-size: 12pt;
+        font-weight: bold;
+        color: #8c579f;
+        border: 1px solid #8c579f;
+        border-radius: 1px;
+    }
+
+
+
+.Segundo-subtitulo-personalizacion {
+    text-align: center;
+    width: 550px;
+    left: 50%;
+    bottom: 0;
+    text-align: center;
+    font-family: Tagit-Font;
+    font-size: 40pt;
+    background-color: transparent;
+    border: none;
+    transform: translate(-50%,-200%);
+    -ms-transform: translate(-50%,-200%);
+}
+
+.Segundo-subtitulo-personalizacionLeft {
+    text-align: center;
+    width: 80%;
+    left: 0%;
+    bottom: 0;
+    text-align: center;
+    font-family: Tagit-Font;
+    font-size: 30pt;
+    background-color: transparent;
+    border: none;
+}
+
+
+
+.barraNaranja {
+    width: 99.8%;
+    height: 20px;
+    background-color: #f1bb64;
+    text-align: center;
+}
+
+.subtitulo {
+    width: 99.8%;
+    height: 100px;
+    font-family: Tagit-Font;
+    font-size: 30pt;
+    font-weight: bold;
+    margin-top: 50px;
+    background-color: none;
+    text-align: center;
+}
+
+
+
+
+.PreviewTitulo {
+    position: absolute;
+    top: 30px;
+    left: 85px;
+    font-family: Tagit-Font;
+    color: white;
+    font-size: 20pt;
+}
+
+.PreviewDescripcion {
+    position: absolute;
+    top: 350px;
+    left: 85px;
+    font-family: Tagit-Font;
+    font-size: 16pt;
+    text-align: left;
+    font-weight: bold;
+    width: 300px;
+}
+
+.preview img {
+    border: 2px solid #EFC17B;
+    width: 300px;
+    height: 315px;
+}
+
+.selectSiteContainer {
+    background-color: none;
+}
+
+.selectSite {
+    text-align: center;
+    margin-top: -20px;
+}
+
+    .selectSite ul {
+        list-style-type: none;
+        display: inline-block;
+        overflow-x: hidden;
+        padding-left: 0px;
+        text-align: center;
+        height: 200px;
+    }
+
+    .selectSite li {
+        left: 2%;
+        width: 180px;
+        height: 80px;
+        position: relative;
+        float: left;
+        color: transparent;
+        text-align: center;
+        vertical-align: central;
+    }
+
+.bg-selectProducto {
+    border: none;
+    background: url(../Content/imagenes/site/fondo_select.png);
+    background-repeat: no-repeat;
+    width: 190px;
+}
+
+.bg-selectCategoria {
+    border: none;
+    background: url(../Content/imagenes/site/fondo_select_cat.png);
+    background-repeat: no-repeat;
+    width: 190px;
+}
+
+
+.selectSite-liP {
+    width: 180px;
+    height: 90px;
+    position: relative;
+    float: left;
+    color: transparent;
+    text-align: center;
+    vertical-align: central;
+    margin-left: 0px;
+    margin-top: 10px;
+}
+
+    .selectSite-liP a {
+        width: 80px;
+        height: 80px;
+        display: block;
+        color: white;
+        text-decoration: none;
+        border: none;
+    }
+
+        .selectSite-liP a:hover {
+            transform: scale(1.2);
+        }
+
+    .selectSite-liP img {
+        width: 80px;
+        height: 80px;
+        z-index: 90;
+    }
+
+    .selectSite-liP div {
+        position: absolute;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 150px;
+        left: 1%;
+        bottom: 0;
+        transform: translate(-20%,70%);
+        -ms-transform: translate(-50%,90%);
+        text-align: center;
+        font-family: Tagit-Font;
+        font-size: 14pt;
+        color: white;
+    }
+
+.selectSite-liInP {
+    width: 180px;
+    height: 90px;
+    position: relative;
+    float: left;
+    color: transparent;
+    text-align: center;
+    vertical-align: central;
+    margin-top: 70px;
+    margin-left: 0px;
+}
+
+    .selectSite-liInP a {
+        width: 80px;
+        height: 80px;
+        display: block;
+        color: white;
+        text-decoration: none;
+    }
+
+        .selectSite-liInP a:hover {
+            transform: scale(1.2);
+        }
+
+    .selectSite-liInP img {
+        width: 80px;
+        height: 80px;
+        z-index: 90;
+    }
+
+    .selectSite-liInP div {
+        border: none;
+        position: absolute;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 150px;
+        left: 1%;
+        bottom: 0;
+        transform: translate(-20%,70%);
+        -ms-transform: translate(-50%,90%);
+        text-align: center;
+        font-family: Tagit-Font;
+        font-size: 14pt;
+        color: white;
+    }
+
+/* Seleccionar grupo estampa*/
+
+.selectGrupeEstampa-liP {
+    width: 180px;
+    height: 90px;
+    position: relative;
+    float: left;
+    color: transparent;
+    text-align: center;
+    vertical-align: central;
+    margin-left: 0px;
+    margin-top: 10px;
+}
+
+    .selectGrupeEstampa-liP a {
+        width: 120px;
+        height: 120px;
+        display: block;
+        color: white;
+        text-decoration: none;
+        border: none;
+    }
+
+        .selectGrupeEstampa-liP a:hover {
+            transform: scale(1.2);
+        }
+
+    .selectGrupeEstampa-liP img {
+        width: 120px;
+        height: 120px;
+        z-index: 90;
+    }
+
+    .selectGrupeEstampa-liP div {
+        position: absolute;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 150px;
+        left: 1%;
+        bottom: 0;
+        transform: translate(-20%,70%);
+        -ms-transform: translate(-50%,90%);
+        text-align: center;
+        font-family: Tagit-Font;
+        font-size: 14pt;
+        color: white;
+    }
+
+.selectGrupeEstampa-liInP {
+    width: 180px;
+    height: 90px;
+    position: relative;
+    float: left;
+    color: transparent;
+    text-align: center;
+    vertical-align: central;
+    margin-top: 70px;
+    margin-left: 0px;
+}
+
+    .selectGrupeEstampa-liInP a {
+        width: 120px;
+        height: 120px;
+        display: block;
+        color: white;
+        text-decoration: none;
+    }
+
+        .selectGrupeEstampa-liInP a:hover {
+            transform: scale(1.2);
+        }
+
+    .selectGrupeEstampa-liInP img {
+        width: 120px;
+        height: 120px;
+        z-index: 90;
+    }
+
+    .selectGrupeEstampa-liInP div {
+        border: none;
+        position: absolute;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 150px;
+        left: 1%;
+        bottom: 0;
+        transform: translate(-20%,70%);
+        -ms-transform: translate(-50%,90%);
+        text-align: center;
+        font-family: Tagit-Font;
+        font-size: 14pt;
+        color: white;
+    }
+
+
+
+
+/* Plantilla seleccion */
+
+.selectPlantilla {
+    position: absolute;
+    padding-top: 50px;
+    padding-bottom: 1px;
+    width: 100%;
+    height: 450px;
+    left: 0;
+    bottom: 0;
+    transform: translate(0%,90%);
+    -ms-transform: translate(0%,80%);
+    background-color: transparent;
+    border: none;
+}
+
+    .selectPlantilla ul {
+        list-style-type: none;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .selectPlantilla li {
+        padding-top: 15px;
+        width: 450px;
+        height: 200px;
+        position: relative;
+        float: left;
+        color: transparent;
+        text-align: center;
+        vertical-align: central;
+    }
+
+        .selectPlantilla li a {
+            width: 280px;
+            height: 300px;
+            display: block;
+            color: white;
+            text-decoration: none;
+        }
+
+            .selectPlantilla li a:hover {
+                transform: scale(1.1);
+            }
+
+        .selectPlantilla li img {
+            width: 160px;
+            height: 120px;
+            border: 3px solid #8c579f;
+        }
+
+        .selectPlantilla li h1 {
+            font-family: Tagit-Font;
+            font-size: 18pt;
+            color: #EFC17B;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .selectPlantilla li p {
+            font-family: Tagit-Font;
+            font-size: 16pt;
+            color: #83499e;
+            font-weight: bold;
+            text-align: left;
+            /*background: url(../Content/imagenes/site/fondo_select.png);
+            background-repeat: no-repeat;
+            position: absolute;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            width: 150px;
+            height: 90px;
+            left: 25%;
+            bottom: 0;
+            transform: translate(-20%,10%);
+            -ms-transform: translate(-20%,10%);
+            
+            
+            background-color: transparent;
+            border: none;
+            border-radius: 10px;*/
+        }
+
+/* Estampa seleccion */
+
+.selectEstampa {
+    position: absolute;
+    padding-top: 50px;
+    padding-bottom: 1px;
+    width: 100%;
+    height: 450px;
+    left: 0;
+    bottom: 0;
+    transform: translate(0%,90%);
+    -ms-transform: translate(0%,80%);
+    background-color: transparent;
+    border: none;
+}
+
+    .selectEstampa ul {
+        list-style-type: none;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .selectEstampa li {
+        padding-top: 15px;
+        width: 180px;
+        height: 180px;
+        position: relative;
+        float: left;
+        color: transparent;
+        text-align: center;
+        vertical-align: central;
+    }
+
+        .selectEstampa li a {
+            width: 180px;
+            height: 180px;
+            display: block;
+            color: white;
+            text-decoration: none;
+        }
+
+            .selectEstampa li a:hover {
+                transform: scale(1.1);
+            }
+
+        .selectEstampa li img {
+            width: 150px;
+            height: 150px;
+            border: none;
+        }
+
+        .selectEstampa li h1 {
+            font-family: Tagit-Font;
+            font-size: 18pt;
+            color: #EFC17B;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .selectEstampa li p {
+            font-family: Tagit-Font;
+            font-size: 16pt;
+            color: #83499e;
+            font-weight: bold;
+            text-align: left;
+            background-color: transparent;
+            border: none;
+        }
+
+.EditTag {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 98;
+    color: black;
+    text-align: center;
+    vertical-align: middle;
+    opacity: 0.9;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-siguiente {
+    font-family: Tagit-Font;
+    font-size: 20pt;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    background-color: #8c579f;
+}

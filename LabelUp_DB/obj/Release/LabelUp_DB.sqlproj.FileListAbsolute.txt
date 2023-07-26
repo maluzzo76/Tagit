@@ -1,0 +1,9 @@
+C:\Users\maria\Documents\Fuentes\LABELUP\LabelUpV2\LabelUp_DB\bin\Release\LabelUp_DB.dacpac
+C:\Users\maria\Documents\Fuentes\LABELUP\LabelUpV2\LabelUp_DB\bin\Release\LabelUp_DB.dll
+C:\Users\maria\Documents\Fuentes\LABELUP\LabelUpV2\LabelUp_DB\bin\Release\LabelUp_DB.pdb
+C:\Users\maria\Documents\Fuentes\LABELUP\LabelUpV2\LabelUp_DB\obj\Release\Model.xml
+C:\Users\maria\Documents\Fuentes\LABELUP\LabelUpV2\LabelUp_DB\obj\Release\refactor.xml
+C:\Users\maria\Documents\Fuentes\LABELUP\LabelUpV2\LabelUp_DB\obj\Release\postdeploy.sql
+C:\Users\maria\Documents\Fuentes\LABELUP\LabelUpV2\LabelUp_DB\obj\Release\predeploy.sql
+C:\Users\maria\Documents\Fuentes\LABELUP\LabelUpV2\LabelUp_DB\obj\Release\LabelUp_DB.dll
+C:\Users\maria\Documents\Fuentes\LABELUP\LabelUpV2\LabelUp_DB\obj\Release\LabelUp_DB.pdb

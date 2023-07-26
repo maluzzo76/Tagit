@@ -1,0 +1,88 @@
+﻿@model LabelUp_Admin.Models.tbl_Plantillas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="col-sm-11"><h2>Agregar Estampas a -  @Model.Nombre</h2></div>
+
+
+
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-sm-6">
+            <div><h3>Estampas <span class="badge badge-light">@Model.tbl_Plantillas_Estampas.Where(t => t.Activo == false).Count()</span> </h3></div>
+            <div class="col-sm-11 scrollbar-details">
+                <table class="table">
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.tbl_Plantillas_Estampas.Where(t => t.Activo == false))
+                        {
+                            <tr>
+                                <td style="width: 100px; vertical-align: middle;"><img class="card-img-top " style="width:40px; height:40px;" src="@Href(item.tbl_Estampas.tbl_Imagenes.URI)" alt="@item.tbl_Estampas.tbl_Imagenes.Nombre"></td>
+                                <td style="vertical-align:middle;">@item.tbl_Estampas.Nombre</td>
+                                <td style="vertical-align:middle; text-align:right;">
+                                    <a href="@Url.Action("SetEstampa", "tbl_Plantillas",new { id = item.Id })">
+                                        <img src="@Url.Content("/Content/imagenes/iconos/iconos_link.png")" title="Vincular" class="btn-grid" />
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div><h3>Vinculadas <span class="badge badge-light">@Model.tbl_Plantillas_Estampas.Where(t => t.Activo == true).Count()</span></h3></div>
+            <div class="col-sm-11 scrollbar-details ">
+                <table class="table ">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.tbl_Plantillas_Estampas.Where(t => t.Activo == true))
+                        {
+                            <tr>
+                                <td style="width: 100px; vertical-align: middle;"><img class="card-img-top " style="width:40px; height:40px;" src="@Href(item.tbl_Estampas.tbl_Imagenes.URI)" alt="@item.tbl_Estampas.tbl_Imagenes.Nombre"></td>
+                                <td style="vertical-align:middle;">@item.tbl_Estampas.Nombre</td>
+                                <td style="vertical-align:middle; text-align:right;">
+
+                                    <div class="col-md-10">
+                                        <div class="dropdown">
+                                            <button class="btn btn-default dropdown-toggle " type="button" data-toggle="dropdown">
+                                                <img id="imgSelPlantilla_@item.Id" src="@Href((new LabelUp_Admin.Models.BusinessEntities()).tbl_Imagenes.Find(item.Id_ImagenPlantilla).URI)" alt="imgSel" style="width:30px; height:30px;" />
+                                                Seleccionar Imagen
+                                                <span class="caret "></span>
+                                            </button>
+                                            <ul class="dropdown-menu list-group">
+                                                @foreach (var iImg in (IEnumerable<SelectListItem>)ViewBag.Id_imagenPlantilla)
+                                                {
+                                                    <li>
+                                                        <a href="@Url.Action("SetImagenPlantilla", "tbl_Plantillas", new { id = item.Id, idimg = iImg.Value })"
+                                                           onclick=" document.getElementById('Id_ImagenPlantilla').value = @iImg.Value; $('#imgSelPlantilla_@item.Id').attr('src','@Href(iImg.Text)');">
+                                                            <img src="@Href(iImg.Text)" alt="@iImg.Text" style="width:50px; height:50px;" />
+                                                            @((new LabelUp_Admin.Models.BusinessEntities()).tbl_Imagenes.Find(int.Parse(iImg.Value)).Nombre)
+                                                        </a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                        <input type="hidden" id="Id_ImagenPlantilla_@item.Id" name="Id_ImagenPlantilla" value="@Model.Id_imagenPlantilla" />
+                                    </div>
+
+                                    <a href="@Url.Action("SetEstampa", "tbl_Plantillas",new { id = item.Id })">
+                                        <img src="@Url.Content("/Content/imagenes/iconos/iconos-33.png")" title="Desvincular" class="btn-grid" />
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-info" })

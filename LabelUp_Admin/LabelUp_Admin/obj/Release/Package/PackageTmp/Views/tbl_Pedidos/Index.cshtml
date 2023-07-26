@@ -1,0 +1,162 @@
+﻿@model LabelUp_Admin.Controllers.PaginadorGenerico<LabelUp_Admin.Models.tbl_Pedidos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Pedidos</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Ped. Numero
+        </th>
+        <th>
+            Fecha
+        </th>
+        <th>
+            Estado
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Costo Envio
+        </th>
+        <th>
+            Sub Total
+        </th>
+        <th>
+            Total
+        </th>
+        <th>
+            Id Marc. Pago
+        </th>
+        <th>
+            Estado Marc. Pago
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Resultado)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @item.Fecha.Value.ToShortDateString()
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tbl_Estados_Pedido.Estado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tbl_Usuarios.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tbl_Envios_Parametros.Costo_Envio)
+    </td>
+    <td>
+        @item.tbl_cart.Sum(p => p.Total)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Total)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MercadoPagoId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MercadoPagoStatus)
+    </td>
+    <td>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_@item.Id">
+            Ver Datos Facturacion
+        </button>
+
+        <div class="modal fade" id="myModal_@item.Id">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Datos de Facturacion</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div> Nombre y Apellido: @item.Facturacion_Nombre_Apellido</div>
+                        <div> Direccion: @item.Direccion_Facturacion</div>
+                        <div>Piso: @item.Facturacion_Piso</div>
+                        <div>Dpto: @item.Facturacion_Dto</div>
+                        <div> Codigo Postal: @item.Facturacion_CP</div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </td>
+    <td>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalEnt_@item.Id">
+            Ver Datos Entrega
+        </button>
+
+        <div class="modal fade" id="myModalEnt_@item.Id">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Datos de Entrega</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div> Nombre y Apellido: @item.Entrga_Nombre_Apellido</div>
+                        <div> Direccion: @item.Direccion_Entrega</div>
+                        <div>Piso: @item.Entrega_Piso</div>
+                        <div>Dpto: @item.Entrega_Dto</div>
+                        <div> Codigo Postal: @item.Entrega_CP</div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </td>
+
+    <td>
+        <a href="@Url.Action("Edit", "tbl_Pedidos",new { id = item.Id })">
+            <img src="@Url.Content("/Content/imagenes/iconos/iconos_Lapiz.png")" class="btn-grid" />
+        </a>
+        <a href="@Url.Action("Details", "tbl_Pedidos",new { id = item.Id })">
+            <img src="@Url.Content("/Content/imagenes/iconos/iconos_Producto.png")" class="btn-grid" />
+        </a>
+
+    </td>
+</tr>
+    }
+</table>
+
+<div class="container-fluid">
+    <ul class="pagination  pull-right">
+        @for (int p = 1; p < Model.TotalPaginas + 1; p++)
+        {
+            if (p == Model.PaginaActual)
+            {
+                <li class="active">@Html.ActionLink(p.ToString(), "Index", new { pagina = p })</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink(p.ToString(), "Index", new { pagina = p })</li>
+            }
+        }
+    </ul>
+</div>
+

@@ -1,0 +1,178 @@
+﻿@model LabelUp_Admin.Models.tbl_cart
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_cart</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.keyUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.keyUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Param1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Param1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Param2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Param2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Param3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Param3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Param4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Param4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParamSize1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParamSize1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParamSize2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParamSize2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParamSize3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParamSize3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParamSize4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParamSize4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FontName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FontName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FontColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FontColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioUnitario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioUnitario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Estampas.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Estampas.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Estados_Pedido.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Estados_Pedido.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Plantillas.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Plantillas.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Productos.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Productos.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Usuarios.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Usuarios.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

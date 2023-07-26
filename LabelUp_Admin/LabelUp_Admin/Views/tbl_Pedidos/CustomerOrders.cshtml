@@ -1,0 +1,121 @@
+﻿@model LabelUp_Admin.Controllers.PaginadorGenerico<LabelUp_Admin.Models.tbl_Pedidos>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="font-LabelUp" style="background-color: #ffd800; height: 40px; text-align: center;margin-left:15px">
+            <h4 style="padding-top:10px;">Mis Pedidos</h4>
+        </div>
+        <div style="width:98%;">
+            <table class="table">
+                <tr>
+                    <th>
+                        Ped. Numero
+                    </th>
+                    <th>
+                        Fecha
+                    </th>
+                    <th>
+                        Estado
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Costo Envio
+                    </th>
+                    <th>
+                        SubTotal
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                    <th>
+                        Referencia de Pago
+                    </th>
+                    <th>
+                        Estado del Pago
+                    </th>                   
+                    <th></th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.Resultado)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @item.Fecha.Value.ToShortDateString()
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tbl_Estados_Pedido.Estado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tbl_Usuarios.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tbl_Envios_Parametros.Costo_Envio)
+                        </td>
+                        <td>
+                            @item.tbl_cart.Sum(p => p.Total)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Total)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MercadoPagoId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MercadoPagoStatus).ToString().Replace("rejected", "Rechazado").Replace("approved", "Aprobado")
+                        </td>                      
+                        <td>
+                            @{
+                                if (Html.DisplayFor(Model => item.MercadoPagoStatus).ToString() != "approved")
+                                {
+                                    <a href="@Url.Action("payOrder", "tbl_Pedidos",new { id = item.Id })">
+                                        <img src="@Url.Content("/Content/imagenes/iconos/Pagar.png")" data-toggle="tooltip" alt="alternative text" title="Pagar" class="btn-grid" />
+                                    </a>
+                                }
+                            }
+
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details", "tbl_Pedidos",new { id = item.Id })">
+                                <img src="@Url.Content("/Content/imagenes/iconos/iconos_Producto.png")" data-toggle="tooltip" alt="alternative text" title="Ver Pedido" class="btn-grid" />
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div>
+                <ul class="pagination  pull-right">
+                    @for (int p = 1; p < Model.TotalPaginas + 1; p++)
+                    {
+                        if (p == Model.PaginaActual)
+                        {
+                            <li class="active">@Html.ActionLink(p.ToString(), "CustomerOrders", new { pagina = p })</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink(p.ToString(), "CustomerOrders", new { pagina = p })</li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+
+
+

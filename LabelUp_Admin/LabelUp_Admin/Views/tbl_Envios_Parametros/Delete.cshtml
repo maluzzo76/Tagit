@@ -1,0 +1,20 @@
+﻿@model LabelUp_Admin.Models.tbl_Envios_Parametros
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar Parametro de envio @Model.Localidad</h2>
+
+<h3>Confirma que desea eliminar?</h3>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-info" })
+            <input type="submit" value="Eliminar" class="btn btn-default" /> 
+        </div>
+    }
+</div>

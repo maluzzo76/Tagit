@@ -1,0 +1,81 @@
+﻿@Html.Partial("_customError")
+
+<div class="container-fluid" style=" height: 65vh;">
+    <div class="row">
+        <div class="d-flex justify-content-center">
+            <div>
+                <img class="responsive" src="~/Content/imagenes/site/banners/img_banner_productos.png" />
+            </div>
+            <div class="col-md-12">
+                <div class="container ">
+                    <div class="row titulo col-md-12">
+                        <div><h4>Tenes muchas opcions para elegir!</h4></div>
+                        <div><h6>Podes personalizar segun tus gustos y necesidades</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="d-flex justify-content-center col-md-6" style="overflow: auto; height: 45vh;">
+                            @foreach (var items in (List<LabelUp_Admin.Models.tbl_Productos_Plantillas>)ViewBag.lstPlantillaProducto)
+                            {
+                                <div class="col-md-6" style=" padding-top: 10px ">
+                                    <div class="card" style="background-color: #ffffff; padding-top: 15px ">
+                                        <a>
+                                            <img class="card-img-top" style="zoom:10%; "
+                                                 src="@Href(items.tbl_Plantillas.tbl_Imagenes1.URI)" alt="@items.tbl_Plantillas.Nombre"
+                                                 onclick="SetPrevire('@Href(items.tbl_Plantillas.tbl_Imagenes1.URI)','@items.Id_Plantilla.ToString()', '@items.tbl_Productos.tbl_Productos_Plantillas.Where(p => p.Id_Plantilla == @items.tbl_Plantillas.Id).ToList()[0].Precio ', '@items.tbl_Plantillas.Id')">
+                                        </a>
+                                        <div class="card-body" style="height:100px; overflow:hidden">
+
+                                            <h4 class="card-title" style=" font-weight: bold;">@items.tbl_Plantillas.Nombre</h4>
+                                            <p id="plDesc_@items.Id_Plantilla" style="visibility:hidden; height:1px;" class="card-text">@items.tbl_Plantillas.Descripcion</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="col-md-6 ">
+                            <div class="row" >
+                                <div class="col-lg-6">
+                                    @using (Html.BeginForm("step2", "Store", FormMethod.Post))
+                                    {
+                                        <div>
+                                            <img class="card-img-top" id="imgPreview" src="~/Content/imagenes/site/preview.png" alt="preview" style="width: 300px; height: 200px; border: 3px solid #8c579f" />
+                                            <input type="text" id="pid" name="pid" value="@ViewBag.IdProducto" style="visibility:hidden" />
+                                            <input type="submit" value="Seleccionar" class="btn btn-seleccionar" style="margin-left:50px;" />
+                                            <input type="text" id="plid" name="plid" value="" style="visibility:hidden" />
+                                        </div>
+                                    }
+                                </div>
+                                <div class="col-md-6" style="padding-left:35px">
+                                    <h3 class="font-LabelUp">Detalle de plantilla</h3>
+                                    <h2 id="PCosto" style=" font-weight: bold;" class="card-text"></h2>
+                                    <textarea id="Pdescript" style="min-width: 100%; margin-left: 4px; font-size: 10pt; border: hidden; resize: none; " class="Store4Detalle" rows="8" readonly>                                  
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+
+    function SetPrevire(imagen, desId,  costo, plid) {
+        var _costo = parseFloat(costo).toFixed(2);
+        
+        $("#imgPreview").attr("src", imagen);
+        $("#plid").attr("value", plid);
+        var _idDes = "#plDesc_" + desId;        
+        var _descipcion = $(_idDes).text();
+        $("#Pdescript").text(_descipcion);
+        $("#PCosto").text('$ ' + _costo);
+    }
+</script>

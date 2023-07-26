@@ -1,0 +1,66 @@
+﻿@model LabelUp_Admin.Models.tbl_Grupo_Estampas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div class="col-sm-11"><h2>Agregar Estampas a -  @Model.Nombre</h2></div>
+
+
+
+<div class="container-fluid">
+    <div class="row ">
+
+        <div class="col-sm-6">
+            <div><h3>Estampas <span class="badge badge-light">@Model.tbl_Estampa_GrupoEstampa.Where(t => t.Activo == false).Count()</span> </h3></div>
+            <div class="col-sm-11 scrollbar-details">
+                <table class="table">
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.tbl_Estampa_GrupoEstampa.Where(t => t.Activo == false))
+                        {
+                            <tr>
+                                <td style="width: 100px; vertical-align: middle;"><img class="card-img-top " style="width:40px; height:40px;" src="@Href(item.tbl_Estampas.tbl_Imagenes.URI)" alt="@item.tbl_Estampas.tbl_Imagenes.Nombre"></td>
+                                <td style="vertical-align:middle;">@item.tbl_Estampas.Nombre</td>
+                                <td style="vertical-align:middle; text-align:right;">
+                                    <a href="@Url.Action("SetEstampa", "tbl_Grupo_Estampas",new { id = item.Id })">
+                                        <img src="@Url.Content("/Content/imagenes/iconos/iconos_link.png")" title="Vincular" class="btn-grid" />
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div><h3>Vinculadas <span class="badge badge-light">@Model.tbl_Estampa_GrupoEstampa.Where(t => t.Activo == true).Count()</span></h3></div>
+            <div class="col-sm-11 scrollbar-details ">
+                <table class="table ">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.tbl_Estampa_GrupoEstampa.Where(t => t.Activo == true))
+                        {
+                            <tr>
+                                <td style="width: 100px; vertical-align: middle;"><img class="card-img-top " style="width:40px; height:40px;" src="@Href(item.tbl_Estampas.tbl_Imagenes.URI)" alt="@item.tbl_Estampas.tbl_Imagenes.Nombre"></td>
+                                <td style="vertical-align:middle;">@item.tbl_Estampas.Nombre</td>
+                                <td style="vertical-align:middle; text-align:right;">
+                                    <a href="@Url.Action("SetEstampa", "tbl_Grupo_Estampas",new { id = item.Id })">
+                                        <img src="@Url.Content("/Content/imagenes/iconos/iconos-33.png")" title="Desvincular" class="btn-grid" />
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-info" })

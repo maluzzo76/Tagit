@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@{ LabelUp_Admin.Controllers.CustomController _ctrol = new LabelUp_Admin.Controllers.CustomController();
+    if (_ctrol.ValidarAdmin(User.Identity.GetUserName()))
+    {
+        @Html.Partial("_HomeAdmin")
+    }
+    else
+    {
+        @Html.Partial("_HomeStore")
+    }
+}
+
+

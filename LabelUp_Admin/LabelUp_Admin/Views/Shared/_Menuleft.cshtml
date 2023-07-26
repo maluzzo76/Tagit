@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNet.Identity
+
+
+<div>
+    @{
+        LabelUp_Admin.Controllers.CustomController _ctrol = new LabelUp_Admin.Controllers.CustomController();
+        if(_ctrol.ValidarAdmin(User.Identity.GetUserName()))
+        {
+        <div id="mySidebar" class="sidebar">
+                <div style="padding-top:120px;">
+                    <a href="@Url.Action("Index", "Home")">
+                        <img src="@Url.Content("~/Content/imagenes/iconos/iconos_Casa.png")" title="Incio" class="imageMenu " />
+                    </a>
+                    <a href="@Url.Action("Index", "tbl_Imagenes")">
+                        <img src="@Url.Content("~/Content/imagenes/iconos/iconos_Imagen.png")" title="Imagenes" class="imageMenu " />
+                    </a>
+                    <a href="@Url.Action("Index", "tbl_Estampas")">
+                        <img src="@Url.Content("~/Content/imagenes/iconos/iconos_Grupo_Estampas.png")" title="Estampas" class="imageMenu " />
+                    </a>
+                    <a href="@Url.Action("Index", "tbl_Grupo_Estampas")">
+                        <img src="@Url.Content("~/Content/imagenes/iconos/iconos_Estampas.png")" title="Grupo Estampas" class="imageMenu " />
+                    </a>
+                    <a href="@Url.Action("Index", "tbl_Plantillas")">
+                        <img src="@Url.Content("~/Content/imagenes/iconos/iconos-34.png")" title="Plantillas" class="imageMenu " />
+                    </a>
+                    <hr style="width:40px; margin-left:0px;" />
+                    <a href="@Url.Action("Index", "tbl_Productos")">
+                        <img src="@Url.Content("~/Content/imagenes/iconos/iconos_Producto.png")" title="Productos" class="imageMenu " />
+                    </a>
+                    <a href="@Url.Action("Index", "tbl_Combos")">
+                        <img src="@Url.Content("~/Content/imagenes/iconos/iconos_Combo.png")" title="Combos" class="imageMenu " />
+                    </a>
+                    <a href="@Url.Action("Index", "tbl_Pedidos")">
+                        <img src="@Url.Content("~/Content/imagenes/iconos/iconos_Clip.png")" title="Pedidos" class="imageMenu " />
+                    </a>
+                    <a href="@Url.Action("Index", "tbl_Envios_Parametros")">
+                        <img src="@Url.Content("~/Content/imagenes/iconos/iconos_Internet.png")" title="Envio Parametros" class="imageMenu " />
+                    </a>
+                </div>
+        </div>
+        }
+    }
+
+</div>

@@ -1,0 +1,107 @@
+﻿@Html.Partial("_customError")
+<div class="container-fluid" style=" height: 68vh; ">
+    <div class="row">
+        <div class="d-flex justify-content-center">
+            <div>
+                <img class="responsive" src="~/Content/imagenes/site/banners/img_banner_productos.png" />
+            </div>
+            <div class="col-md-12">
+                <div class="container ">
+                    <div class="row titulo col-md-12">
+                        <div><h4>Tenes muchas opcions para elegir!</h4></div>
+                        <div><h6>Podes personalizar segun tus gustos y necesidades</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="d-flex justify-content-center col-md-6" style="overflow: auto; height: 35vh;">
+                            @foreach (var items in (IEnumerable<LabelUp_Admin.Models.v_grupoEstampaPlantilla>)ViewBag.lstvGrupoEstampas)
+                            {
+                                <div style=" padding-top: 10px ">
+                                    <div class="accordion">
+                                        <img src="@Href(items.URI)" style="width:30px; height:30px" />
+                                        @items.Nombre
+                                    </div>
+                                    <div class="panel">
+                                        <div class="container" style="width:250px;">
+                                            <div class="row">
+
+                                                @{
+                                                    var lstImagen = (new LabelUp_Admin.Models.BusinessEntities()).tbl_Estampa_GrupoEstampa.Where(e => e.Id_GrupoEstampa == items.id && e.Activo == true).ToList<LabelUp_Admin.Models.tbl_Estampa_GrupoEstampa>();
+                                                    foreach (var item2 in (IEnumerable<LabelUp_Admin.Models.tbl_Estampa_GrupoEstampa>)lstImagen)
+                                                    {
+                                                        var _PE = (new LabelUp_Admin.Models.BusinessEntities()).tbl_Plantillas_Estampas.Where(e => e.Id_Plantilla == items.Id_Plantilla && e.Id_Estampa == item2.Id_Estampa).ToList<LabelUp_Admin.Models.tbl_Plantillas_Estampas>();
+                                                        var _ImagenPlantilla = (new LabelUp_Admin.Models.BusinessEntities()).tbl_Imagenes.Find(_PE.ElementAt(0).Id_ImagenPlantilla).URI;
+                                                        if (!_ImagenPlantilla.Contains("noimage.png"))
+                                                        {
+                                                            <div class="col-md-6 " style="padding-top:10px;">
+                                                                <div class="card" style="border: 1px solid #ffffff;">
+                                                                    <img class="card-img-top" style="width:100px; height:80px;" src="@Href(item2.tbl_Estampas.tbl_Imagenes.URI)" onclick="Test('@Href(@_ImagenPlantilla)', @item2.Id_Estampa, '@item2.tbl_Estampas.Nombre')" ) />
+                                                                    <div class="card-body">
+                                                                        <h4 class="card-title font-LabelUp">@item2.tbl_Estampas.Nombre</h4>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="col-md-6 ">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    @using (Html.BeginForm("step4", "Store", FormMethod.Post))
+                                    {
+                                        <div>
+                                            <img class="card-img-top" id="imgPreview" src="~/Content/imagenes/site/preview.png" alt="preview" style="width: 300px; height: 200px; border: 3px solid #8c579f" />
+                                            <input type="text" id="pid" name="pid" value="@ViewBag.IdProducto" style="visibility:hidden" />
+                                            <input type="text" id="plid" name="plid" value="@ViewBag.IdPlantilla" style="visibility:hidden" />
+                                            <input type="submit" value="Seleccionar" class="btn btn-seleccionar" style="margin-left:50px;margin-top:-30px;" />
+                                            <input type="text" id="eid" name="eid" value="" style="visibility: hidden" />
+                                        </div>
+                                    }
+                                </div>
+                                <div class="col-md-6">
+                                    <h3 class="font-LabelUp">Muestra Plantilla</h3>
+                                    <h4 id="Pdescript" class="card-title font-LabelUp">@ViewBag.PlantillaName</h4>
+                                    <!--<h5 id="Edescript" class="card-title font-LabelUp"></h5>-->
+                                    <p id="PCosto" class="card-text"></p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+
+    function Test(imagen, eid, edesc) {
+        $("#imgPreview").attr("src", imagen);
+        $("#eid").attr("value", eid);
+        $("#Edescript").text(edesc);
+    }
+
+</script>

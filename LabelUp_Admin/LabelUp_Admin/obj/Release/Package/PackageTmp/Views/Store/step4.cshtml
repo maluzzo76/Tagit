@@ -1,0 +1,273 @@
+﻿@model LabelUp_Admin.Models.tbl_Plantillas_Estampas
+
+
+
+
+
+<div class="container" style="background-color:#ffd800; height:50px;width:90%"><h2 class="font-LabelUp " style="margin-top:10px;color:white; font-size:14pt;">Personalización - @ViewBag.ProductoName</h2></div>
+<br />
+<div class="container ">
+
+    <div class="row" style="margin-top:-10px;" z-index:99; border:none">
+        <div id="imgEdit" class="col-md-7">
+            <img src="@Href(Model.tbl_Imagenes.URI)" alt="@Model.Id" style="width: 695px; height: 500px; left:0px;margin-left:-30px;  border: none ; top: 0px;" />
+        </div>
+        <div class="col-md-5" style="overflow: hidden;">
+            <div class="row">
+                <div>
+                    <!-- Parametros configuracion -->
+                    <form action="addToCart" method="post">
+                        <div class="row">
+                            <div class="col-md-6" style="background-color: #f7f4f4; height: 300px">
+                                <div>
+                                    <h3 style="font-family: Tagit-Font; color:#8c579f ">Personalización</h3>
+                                </div>
+                                <div style="@ViewBag.param1;">
+                                    <div style="border:none;">
+                                        <label style="font-family: Tagit-Font; color:#8c579f">Texto 1</label>
+                                        <input type="text" id="Param1" name="Param1" placeholder="Ingrese un texto aquí" onkeyup="mt1();" />
+                                    </div>
+                                    <label style="font-family: Tagit-Font; color:#8c579f">Tamaño</label>
+                                    <select name="paramSize1" id="paramSize1" onchange="mt1();">
+                                        @for (int i = 16; i < 32; i = i + 2)
+                                        {
+                                            if (i == 24)
+                                            {
+                                                <option value="@i" selected> @i</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        }
+                                    </select>
+                                    <label style="font-family: Tagit-Font; color:#8c579f">Negrita</label>
+                                    <input type="checkbox" id="param1Bold" name="param1Bold" value="Negrita" onchange="mt1();" />
+                                </div>
+                                <br />
+                                <div style="@ViewBag.param2; ">
+                                    <div style="border:none;">
+                                        <label style="font-family: Tagit-Font; color:#8c579f">Texto 2</label>
+                                        <input type="text" id="Param2" name="Param2" placeholder="Ingrese un texto aquí" onkeyup="mt1();" />
+                                    </div>
+                                    <label style="font-family: Tagit-Font; color:#8c579f">Tamaño</label>
+                                    <select name="paramSize2" id="paramSize2" onchange="mt1();">
+                                        @for (int i = 16; i < 32; i = i + 2)
+                                        {
+                                            if (i == 24)
+                                            {
+                                                <option value="@i" selected> @i</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        }
+                                    </select>
+                                    <label style="font-family: Tagit-Font; color:#8c579f">Negrita</label>
+                                    <input type="checkbox" id="param2Bold" name="param2Bold" value="Negrita" onchange="mt1();" />
+                                </div>
+                                <br />
+                                <div style="@ViewBag.param3;">
+                                    <div style="border:none;">
+                                        <label style="font-family: Tagit-Font; color:#8c579f">Texto 3</label>
+                                        <input type="text" id="Param3" name="Param3" placeholder="Ingrese un texto aquí" />
+                                    </div>
+                                    <label style="font-family: Tagit-Font; color:#8c579f">Tamaño</label>
+                                    <select name="paramSize3" id="paramSize3">
+                                        @for (int i = 16; i < 32; i = i + 2)
+                                        {
+                                            if (i == 24)
+                                            {
+                                                <option value="@i" selected> @i</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        }
+                                    </select>
+                                    <label style="font-family: Tagit-Font; color:#8c579f">Negrita</label>
+                                    <input type="checkbox" id="param3Bold" name="param3Bold" value="Negrita" onchange="mt1();" />
+                                </div>
+                                <br />
+                                <div style="@ViewBag.param4">
+                                    <div style="border:none;">
+                                        <label style="font-family: Tagit-Font; color:#8c579f">Texto 4</label>
+                                        <input type="text" id="param4" name="param4" placeholder="Ingrese un texto aquí" />
+                                    </div>
+                                    <label style="font-family: Tagit-Font; color:#8c579f">Tamaño</label>
+                                    <select name="paramSize4" id="paramSize4">
+                                        @for (int i = 16; i < 32; i = i + 2)
+                                        {
+                                            if (i == 24)
+                                            {
+                                                <option value="@i" selected> @i</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        }
+                                    </select>
+                                    <label style="font-family: Tagit-Font; color:#8c579f">Negrita</label>
+                                    <input type="checkbox" id="param2Bold" name="param2Bold" value="Negrita" onchange="mt1();" />
+                                </div>
+                                <div style="@ViewBag.color padding-top:-20px">
+                                    <div style="border:none; height:60px;padding-top:10px;">
+                                        <label class="Store4SubTitulo" style="width:40px">Fonts </label>
+                                        <select name="FontName" id="FontName" onchange="mt1();" style="margin-left:5px; width:100px">
+                                            <option value="Arial" style="font-family: Arial;">Arial</option>
+                                            <option value="Ariblk" style="font-family: Ariblk;">Ariblk</option>
+                                            <option value="Eras-Bold-ITC" style="font-family: Eras-Bold-ITC;">Eras Bold</option>
+                                            <option value="hobo" style="font-family: hobo;">hobo</option>
+                                            <option value="Kristen-ITC" style="font-family: Kristen-ITC;">Kristen</option>
+                                            <option value="MAIAN" style="font-family: MAIAN;">Maian</option>
+                                            <option value="segoepr" style="font-family: segoepr;">Segoepr</option>
+                                            <option value="Snap-ITC" style="font-family: Snap-ITC;">Snap</option>
+                                        </select>
+                                        <input type="color" id="FontColor" name="FontColor" style="margin-left: 13px;padding-top:3px;  border: none; " onchange="mt1();" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6" style=" background-color: #f4f1f1; height: 300px">
+                                <div>
+                                    <h3 style="font-family: Tagit-Font; color:#8c579f ">Detalle del pedido</h3>
+                                </div>
+                                <div style="visibility:hidden; height:1px;">
+                                    <input type="number" id="idPro" name="idPro" value="@ViewBag.IdProducto" />
+                                    <input type="number" id="idPlan" name="idPlan" value="@ViewBag.IdPlantilla" />
+                                    <input type="number" id="idEst" name="idEst" value="@ViewBag.IdEstampa" />
+                                    <input type="number" id="idPlaEst" name="idPlaEst" value="@Model.Id" />
+                                    <input type="number" id="precioUnitario" name="precioUnitario" value="" />
+                                    <input type="number" id="Cantidad" name="Cantidad" value="" />
+                                    <input type="number" id="Total" name="Total" value="30" />
+                                </div>
+                                <div style=" height: 30px; vertical-align: middle; ">
+                                    <h3 class="Store4SubTitulo">Precio set: $ @ViewBag.Precio</h3>
+                                </div>
+                                <div class="form-group" style=" text-align: center; padding-bottom: 5px">
+                                    <label class="Store4SubTitulo" style="width:80px;">Cantidad</label>
+                                    <input type="number" id="Cant" name="Cant" value="1" step="1" onclick="calcularTotal(@ViewBag.Precio)" onkeyup="cantonChange(@ViewBag.Precio)" class="Store4Catidad" />
+                                </div>
+                                <div>
+                                    <h1 id="total" class="Store4SubTitulo">Total: $ </h1>
+                                </div>
+                                <div style=" border: none;padding-top:5px; padding-bottom:5px">
+                                    <input type="submit" class="btn-seleccionar " style="color:white;width:200px; " value="Enviar a carrito" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <p class="" style="font-size:10pt;"> </p>
+                                    <textarea style="min-width: 93%; margin-left: 4px; font-size: 10pt; border: hidden; resize: none; " class="Store4Detalle" rows="9"  readonly>
+                                    @Model.tbl_Plantillas.Descripcion 
+                                    @ViewBag.ProductoDescripcion
+                                </textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function mt1() {
+        var _BoolParam1 = $('#param1Bold:checkbox:checked').length > 0;
+        var _BoolParam2 = $('#param2Bold:checkbox:checked').length > 0;
+        var _BoolParam3 = $('#param3Bold:checkbox:checked').length > 0;
+        var _BoolParam4 = $('#paramBold:checkbox:checked').length > 0;
+        @Html.Raw(ViewBag.scriptWriteText)
+    }
+
+
+    function convertZoom(zoom, sFont)
+    {
+        if (zoom < 1) {
+            return (sFont * zoom);
+        }
+
+        return sFont;
+    }
+
+
+
+
+
+    window.onload = function (e) {
+        $("#footerpage").hide(100);
+
+        calcularTotal(@ViewBag.Precio);
+        @ViewBag.scriptDib
+
+       /* $(window).resize(function () {
+            window.location.reload(true);
+        });*/
+    }
+
+
+
+
+
+
+    $(document).keypress(function (e) {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    function cantonChange(valor) {
+        calcularTotal(valor)
+    }
+
+    function calcularTotal(valor) {
+
+        var _cantidad = $("#Cant").val();
+
+        if (_cantidad < 0) {
+            _cantidad = 0;
+            $("#Cant").val(0);
+        }
+
+        $("#Cantidad").attr("value", (_cantidad));
+        $("#precioUnitario").attr("value", valor);
+
+        var _total = (valor * _cantidad);
+        $("#total").text('Total: $ ' + _total.toFixed(2));
+
+    }
+
+    function creatDivMt(X, Y, W, H, ctext, fsize, did) {
+
+        var _img = $("#imgEdit").position();
+        const div = document.createElement("div");
+      var _vAlto = -15;
+        var _vAncho =(88- _img.left);
+      var x = X - _vAncho;
+      var y = Y + _vAlto;
+      var w = W - _vAncho;
+      var h = H + _vAlto;
+
+        div.id = "vText" + did + "_" + ctext;
+        //div.style.zoom = "50%";
+        //div.style.marginTop = 210 + "px";        
+      div.style.fontFamily = "calibri";
+        div.style.position = "absolute";
+        div.style.left = x + "px";
+        div.style.top = y + "px";
+        div.style.width = w - x + "px";
+        div.style.height = h - y + "px";
+     
+
+      div.className = "EditTag";
+      div.innerHTML = "Aqui su texto";
+        div.style.fontSize = fsize + "pt";
+
+        document.body.appendChild(div);
+    }
+</script>

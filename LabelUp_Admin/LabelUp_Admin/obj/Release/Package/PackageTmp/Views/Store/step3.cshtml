@@ -1,0 +1,85 @@
+﻿
+<div class="container-fluid">
+    <div class="row">
+        <div class="d-flex justify-content-center">
+            <img src="~/Content/imagenes/site/fondo_select_01.png" alt="image" />
+            <div class="storeTitulo"> @ViewBag.ProductoName</div>
+            <div class="d-flex justify-content-center subtitulo-personalizacion fc-violeta">
+                ¡Crea los mejores diseños!  2 - Elige una plantilla.
+            </div>
+        </div>
+    </div>
+
+    <div style="width:98%;">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="selectEstampa">
+                    <ul>
+                        @{
+                            var _pl = false;
+                            foreach (var item in (IEnumerable<LabelUp_Admin.Models.v_EstampaPlantillaGrupoEstampa>)ViewBag.lstvEstampas)
+                            {
+                                if (!_pl)
+                                {
+                                    <li class="selectSite-liP">
+                                        <a>
+                                            <img src="@Href(item.ImagenEstampa)" alt="@item.Codigo"
+                                                 onclick="SetPrevire('@Href(item.ImagenPlantillaEstampa)','@item.Id')"/>
+                                        </a>
+                                        
+                                    </li>
+                                    _pl = true;
+                                }
+                                else
+                                {
+                                    <li class="selectSite-liInP">
+                                        <a>
+                                            <img src="@Href(item.ImagenEstampa)" alt="@item.Codigo" 
+                                                  onclick="SetPrevire('@Href(item.ImagenPlantillaEstampa)','@item.Id')"/>
+                                        </a>
+                                       
+                                    </li>
+                                    _pl = false;
+                                }
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4" style="padding-top:50px; ">
+                <img src="~/Content/imagenes/site/fondo_select_01.png" alt="image" style="position:absolute; top:50px; zoom:50%;" />
+                <div class="d-flex justify-content-center PreviewTitulo fc-violeta">
+                    Muestra
+                </div>
+                <img id="imgPreview" src="~/Content/imagenes/site/preview.png" alt="preview" style="width: 400px; height: 300px; border: 3px solid #8c579f">
+               
+            </div>
+        </div>
+        <div class="col-lg-12" style="padding-top: 40px; width:90%; ">
+            @using (Html.BeginForm("step4", "Store", FormMethod.Post))
+            {
+                <div class="row">
+                    <div class="col-lg-1">
+                        <input type="text" id="pid" name="pid" value="@ViewBag.IdProducto" style="visibility:hidden" />
+                        <input type="text" id="plid" name="plid" value="@ViewBag.IdPlantilla" style="visibility:hidden" />
+                        <input type="text" id="eid" name="eid" value="" style="visibility:hidden" />
+                    </div>
+                    <div class="col-lg-11" style="width:90%">
+                        <input type="submit" value="Sigueinte" class="btn-siguiente" />
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+
+
+    <script>
+
+    function SetPrevire(imagen, eid) {
+        $("#imgPreview").attr("src", imagen);
+        $("#eid").attr("value", eid);
+    }
+    </script>
+

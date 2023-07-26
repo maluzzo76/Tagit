@@ -1,0 +1,22 @@
+﻿@model LabelUp_Admin.Models.tbl_cart
+
+@{
+    ViewBag.Title = "Eliminar Producto de carrito";
+}
+
+<h2>Eliminar Producto de carrito</h2>
+
+<h3>Desea eliminar el producto @Model.tbl_Productos.Nombre?</h3>
+<div>   
+    <hr />
+  
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn btn-danger" /> 
+            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-info" })
+        </div>
+    }
+</div>

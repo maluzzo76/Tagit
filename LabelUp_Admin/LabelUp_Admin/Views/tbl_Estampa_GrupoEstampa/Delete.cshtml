@@ -1,0 +1,56 @@
+﻿@model LabelUp_Admin.Models.tbl_Estampa_GrupoEstampa
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tbl_Estampa_GrupoEstampa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Eliminado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Eliminado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Estampas.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Estampas.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Grupo_Estampas.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Grupo_Estampas.Codigo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

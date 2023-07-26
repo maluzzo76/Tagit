@@ -1,0 +1,20 @@
+﻿@model LabelUp_Admin.Models.tbl_Grupo_Estampas
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar Grupo Estampa @Model.Nombre</h2>
+
+<h3>Confirma que desea eliminar el grupo de estampa?</h3>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-info" })
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </div>
+    }
+</div>

@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+@using Microsoft.AspNet.Identity
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="SHORTCUT ICON" href="~/Content/imagenes/site/favicon_48x48.ico" />
+    <title>Tag!t</title>
+    <meta title="Pagina Principal" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F6NDWHP7QG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-F6NDWHP7QG');
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '591160892427781');
+        fbq('track', 'Tagit');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=591160892427781&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Meta Pixel Code -->
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/MenuStyle.css")
+    @Styles.Render("~/Content/LabelUpStyle.css")
+    @Styles.Render("~/Content/StoreStyle.css")
+    @Styles.Render("~/Content/lufont.css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @{ LabelUp_Admin.Controllers.CustomController _ctrol1 = new LabelUp_Admin.Controllers.CustomController();
+        if (_ctrol1.ValidarAdmin(User.Identity.GetUserName()))
+        {
+            @Styles.Render("~/Content/bodySinFondo.css")
+            ViewBag.isAdmin = true;
+            ViewBag.CartCount = 0;
+        }
+        else
+        {
+            ViewBag.isAdmin = false;
+            ViewBag.CartCount = _ctrol1.cartCount();
+            @Styles.Render("~/Content/bodyConFondo.css")
+        }
+    }
+
+</head>
+<body>
+    @{ if (ViewBag.isSplash != true)
+        {
+            <div class="" style="background-color: gray; border:none">
+                @Html.Partial("_LoginPartial")
+            </div>
+            <div id="navPrincipal" class="navbar navbar-inverse  navbar-fixed-top navbar-fixed-left  navbar-principal" style="background-color:white;">
+                <div class="container-fluid ">
+                    <div class="navbar-header" style="color: black; width:100%; ">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="color:white; Background-color:black; z-index:97">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <img src="~/Content/imagenes/site/logo_tagit_color.png" alt="logo" class="navlogo"  />
+                        @{ LabelUp_Admin.Controllers.CustomController _ctrol = new LabelUp_Admin.Controllers.CustomController();
+                            if (_ctrol.ValidarAdmin(User.Identity.GetUserName()))
+                            {
+                                <a class="navbar-brand font-LabelUp" style="font-size:30pt; padding-left:150px; color:black;">Tag!t - Administración </a>
+                            }
+                            else
+                            {
+                                <!--<img src="~/Content/imagenes/site/logo.png" alt="logo" />-->
+                                <ul class="nav navbar-nav navbar-collapse collapse" style="text-align:center; width:100%;margin-left:25%; border:none; background-color: white;">
+                                    @{ if (!@Request.Url.ToString().Contains("/Pago/"))
+                                        {
+                                            <li onmouseover="addTextSelect('home')" onmouseout="delTextSelect('home')">@Html.ActionLink("Mundo tag!t", "Index", "Home", routeValues: null, htmlAttributes: new { id = "home", @class = "font-LabelUp font-menu fc-principal NavMenu-size" })</li>
+                                            <li onmouseover="addTextSelect('step1')" onmouseout="delTextSelect('step1')">@Html.ActionLink("Productos", "Index", "Store", routeValues: null, htmlAttributes: new { id = "step1", @class = "font-LabelUp font-menu fc-principal NavMenu-size" })</li>
+                                            <li onmouseover="addTextSelect('novedades')" onmouseout="delTextSelect('novedades')">@Html.ActionLink("Novedades", "Index", "Home", routeValues: null, htmlAttributes: new { id = "novedades", @class = "font-LabelUp font-menu fc-principal NavMenu-size" })</li>
+                                            <li onmouseover="addTextSelect('contacto')" onmouseout="delTextSelect('contacto')">@Html.ActionLink("Contacto", "Contact", "Home", routeValues: null, htmlAttributes: new { id = "contacto", @class = "font-LabelUp font-menu fc-principal NavMenu-size" })</li>
+                                            <li>
+                                                <a class="btn  cart" href="@Url.Action("Index", "tbl_cart")">
+                                                    <span class="badge badge-light bg-verde" style="left:0%">@ViewBag.CartCount</span>
+                                                </a>
+                                            </li>
+
+
+                                            if (User.Identity.IsAuthenticated)
+                                            {
+                                                <li>@Html.ActionLink("Mis Pedidos", "CustomerOrders", "tbl_Pedidos", routeValues: null, htmlAttributes: new { @class = "font-LabelUp font-menu fc-principal NavMenu-size" })</li>
+                                            }
+
+                                        }
+                                    }
+
+                                </ul>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            @Html.Partial("_Menuleft")
+            if (ViewBag.isAdmin == true)
+            {
+                <div class="container-fluid body-content">
+                    <div class="row">
+                        <div style="width:15px;"></div>
+                        <div style="margin-left:60px; margin-right:60px;" class="col-10">@RenderBody()</div>
+                        <div style="width:15px;"> </div>
+                    </div>
+                    <hr />
+                    <footer>
+                        <p style="margin-left:60px;">&copy; @DateTime.Now.Year - LabelUp</p>
+                    </footer>
+                </div>
+            }
+            else
+            {               
+               
+                <div class="render">
+                    @RenderBody()
+                </div>
+                <div class="container" style="padding-top:0px;">
+                    <div>
+                        @Html.Partial("_footerPage")
+                        <div class="circle-div-face" onclick="openFacebook()"></div>
+                        <div class="circle-div-inst" onclick="openInstagram()"></div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+
+            @RenderBody()
+
+        }
+    }
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/LabelUpScript.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $("#home").css("color", "#575756");
+            $("#step1").css("color", "#575756");
+            $("#novedades").css("color", "#575756");
+            $("#contacto").css("color", "#575756");
+
+        });
+
+        function addTextSelect(id) {
+            var _text = $("#" + id).text();
+            $("#" + id).text("<" + _text + ">");
+            $("#" + id).css("color", "#575756");
+        }
+
+        function delTextSelect(id) {
+            var _text = $("#" + id).text();
+            $("#" + id).text(_text.replace("<", "").replace(">", ""));
+            $("#" + id).css("color", "#575756");
+        }
+
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "100px";
+            document.getElementById("main").style.marginLeft = "100px";
+        }
+
+        function MinNav() {
+            document.getElementById("mySidebar").style.width = "50px";
+            document.getElementById("main").style.marginLeft = "50px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+
+        function openFacebook() {
+            window.open("https://www.facebook.com/tagit.arg");
+        }
+
+        function openInstagram() {
+            window.open("https://www.instagram.com/tagit.ar/");
+        }
+
+
+    </script>
+
+
+</body>
+</html>

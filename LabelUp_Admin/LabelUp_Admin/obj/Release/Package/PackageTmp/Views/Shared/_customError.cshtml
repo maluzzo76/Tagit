@@ -1,0 +1,57 @@
+﻿@if (ViewBag.Message != null)
+{
+    <div class="alert alert-primary alert-dismissible" style="margin-top:10px; z-index:99;">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Error!</strong> @ViewBag.Message.
+    </div>
+}
+
+@if (ViewBag.Warning != null)
+{
+    <div class="alert alert-warning alert-dismissible" style="margin-top:10px; z-index:99;">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Avertencia!</strong> @ViewBag.Warning.
+    </div>
+}
+
+@if (TempData.Count > 0)
+{
+    if (TempData["mensajeWaring"] != null)
+    {
+        if (TempData["mensajeWaring"].ToString() != null)
+        {
+            <div class="alert alert-danger alert-dismissible" style=" position:absolute;width:100%; top:5px; z-index:99;">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Avertencia!</strong> @TempData["mensajeWaring"].ToString().
+            </div>
+        }
+    }
+
+    if (TempData["mensajeConfirm"] != null)
+    {
+        if (TempData["mensajeConfirm"].ToString() != null)
+        {
+        <div class="alert alert-success alert-dismissible" style=" position:absolute;width:100%; top:5px; z-index:99;">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Avertencia!</strong> @TempData["mensajeConfirm"].ToString().
+        </div>
+        }
+    }
+
+}
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger alert-dismissible" style="margin-top:10px; z-index:99;">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Error!</strong> @ViewBag.Error.
+    </div>
+}
+
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success alert-dismissible" style="margin-top:10px; z-index:99;">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Error!</strong> @ViewBag.Success.
+    </div>
+}

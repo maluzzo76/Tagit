@@ -1,0 +1,57 @@
+﻿@model LabelUp_Admin.Models.tbl_Productos
+
+<div style="margin-left: 10px; margin-right: 10px;">
+
+    <div class="container-fluid" style="overflow: auto; height: 68vh;">
+        <div class="row">
+            <div class="d-flex justify-content-center">
+                <div>
+                    <img class="responsive" src="~/Content/imagenes/site/banners/img_banner_productos.png" />
+                </div>
+                <div class="col-md-12">
+                    <div class="container ">
+                        <div class="row titulo ">
+                            <div><h4>Selecciona el producto a personalizar...</h4></div>
+                            <div><h6>de acuerdo a tus gustos y necesidades</h6></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="container">
+                            <div class="row">
+                                @foreach (var items in (IEnumerable<LabelUp_Admin.Models.tbl_Productos>)ViewBag.lstProductos)
+                                {
+                                    <div class="col-md-4">
+                                        <div class="card" style="background-color: #ffffff;  ">
+                                            <a href="@Url.Action("step1", "Store", new { id = items.Id })">
+                                                <img class="card-img-top" src="@Href(@items.tbl_Imagenes.URI)" style="width:250px; height:190px " />
+                                            </a>
+                                            <div class="card-body" style="height:50px; overflow:auto">
+                                                <h4 class="card-title">@items.Nombre</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+

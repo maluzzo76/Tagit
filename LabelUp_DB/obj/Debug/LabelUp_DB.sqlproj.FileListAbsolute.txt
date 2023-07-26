@@ -1,0 +1,6 @@
+C:\Users\maria\Documents\Fuentes\LabelUp\LabelUpV2\LabelUp_DB\bin\Debug\LabelUp_DB.dacpac
+C:\Users\maria\Documents\Fuentes\LabelUp\LabelUpV2\LabelUp_DB\bin\Debug\LabelUp_DB.dll
+C:\Users\maria\Documents\Fuentes\LabelUp\LabelUpV2\LabelUp_DB\bin\Debug\LabelUp_DB.pdb
+C:\Users\maria\Documents\Fuentes\LabelUp\LabelUpV2\LabelUp_DB\obj\Debug\LabelUp_DB.dll
+C:\Users\maria\Documents\Fuentes\LabelUp\LabelUpV2\LabelUp_DB\obj\Debug\LabelUp_DB.pdb
+C:\Users\maria\Documents\Fuentes\LabelUp\LabelUpV2\LabelUp_DB\obj\Debug\LabelUp_DB.sqlproj.AssemblyReference.cache

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="363f11b04ceb433e92f7c03f086e211d" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="BusinessModel.sysdiagrams" Width="1.5" PointX="14" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusinessModel.tbl_Estampa_GrupoEstampa" Width="2.625" PointX="10.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusinessModel.tbl_Estampas" Width="1.5" PointX="7" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusinessModel.tbl_Grupo_Estampas" Width="1.5" PointX="14.125" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusinessModel.tbl_Plantillas" Width="1.5" PointX="6.125" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusinessModel.tbl_Plantillas_Estampas" Width="1.5" PointX="3.5" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusinessModel.tbl_Productos" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusinessModel.tbl_Productos_Plantillas" Width="1.5" PointX="2.375" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Estam__Id_Es__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Estam__Id_Gr__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Plant__Id_Es__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Plant__Id_Pl__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Produ__Id_Pl__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Produ__Id_Pr__5165187F" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BusinessModel.tbl_Usuarios" Width="1.5" PointX="3.125" PointY="1.625" />
+        <EntityTypeShape EntityType="BusinessModel.v_EstampaPlantillaGrupoEstampa" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BusinessModel.tbl_cart" Width="1.5" PointX="11.375" PointY="9.625" />
+        <EntityTypeShape EntityType="BusinessModel.tbl_Estados_Pedido" Width="1.5" PointX="9.125" PointY="14.75" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_cart__Id_Est__10566F31" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_cart__Id_Est__123EB7A3" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_cart__Id_Pla__0F624AF8" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_cart__Id_Pro__0E6E26BF" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_cart__Id_Usu__114A936A" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_cart__Id_Pla__2180FB33" />
+        <EntityTypeShape EntityType="BusinessModel.tbl_Pedidos" Width="1.5" PointX="14.375" PointY="10.625" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_cart__Id_Ped__339FAB6E" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Pedid__Id_Es__32AB8735" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Pedid__Id_Us__31B762FC" />
+        <EntityTypeShape EntityType="BusinessModel.tbl_PrametrosPersonalizacion" Width="1.5" PointX="8.375" PointY="10" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Prame__Id_Pl__3C34F16F" />
+        <EntityTypeShape EntityType="BusinessModel.tbl_Envios_Parametros" Width="1.5" PointX="4.375" PointY="5.75" />
+        <EntityTypeShape EntityType="BusinessModel.AspNetUsers" Width="1.5" PointX="9.25" PointY="0.625" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Pedid__Id_En__756D6ECB" />
+        <EntityTypeShape EntityType="BusinessModel.v_grupoEstampaPlantilla" Width="1.5" PointX="19.5" PointY="3" />
+        <EntityTypeShape EntityType="BusinessModel.tbl_grupoImagen" Width="1.5" PointX="18.25" PointY="14.625" />
+        <EntityTypeShape EntityType="BusinessModel.tbl_Imagenes" Width="1.5" PointX="20.5" PointY="13.625" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Estam__Id_Im__73BA3083" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Estam__Id_Im__5812160E" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Grupo__Id_Im__571DF1D5" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Image__Id_Gr__0880433F" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Plant__Id_Im__5441852A" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Plant__Id_im__59063A47" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Plant__Id_im__59FA5E80" />
+        <AssociationConnector Association="BusinessModel.FK__tbl_Produ__Id_Im__534D60F1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
